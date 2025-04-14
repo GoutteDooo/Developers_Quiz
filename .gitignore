@@ -24,9 +24,5 @@ dist-ssr
 *.sw?
 
 #Flask
-/backend/__pycache__
-/backend/.venv
-
-#Flask
-/backend/__pycache__
-/backend/.venv
+backend/__pycache__/
+backend/.venv/
