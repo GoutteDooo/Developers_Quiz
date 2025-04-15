@@ -22,7 +22,6 @@ function QuizComponent() {
   if (!quiz) {
     return <div>Chargement...</div>;
   }
-  console.log(quiz);
   
 
   return (
