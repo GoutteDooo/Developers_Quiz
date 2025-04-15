@@ -1,0 +1,31 @@
+{
+  "HTML": [
+    {
+      "question": "What is the HTML tag for the main title of a page ?",
+      "choices": ["<h1>", "<title>", "<li>","<BIG TITLE BOLD AND CENTERED>"], 
+      "answer": "<h1>"
+    },
+    {
+      "question": "What is the HTML tag for unordered lists ?",
+      "choices": ["<ol>", "<ul>", "<li>", "<*1 /> <*2 /> <*3 /> (etc...)"],
+      "answer": "<ul>"
+    },
+    {
+      "question": "Find the unknown in this list",
+      "choices": ["<h1></h1>", "<script></script>", "<img></img>", "<table></table>"], 
+      "answer": "<img></img>"
+    }
+  ],
+  "CSS": [
+    {
+      "question":"What does 'CSS' mean ?",
+      "choices":["Central Scripting System", "Cascading Style Sheet", "Central System of Styling", "Crazy Spaghetti Syntax"],
+      "answer": "Cascading Style Sheet"
+    },
+    {
+      "question":"What is the CSS property for changing the color of a text ?",
+      "choices":["color", "font-color", "text-color", "MaGiCaL-CoLoR"],
+      "answer": "color"
+    }
+  ]
+}
