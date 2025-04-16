@@ -2,34 +2,36 @@ import React, { useEffect, useState } from 'react';
 
 // Define a type for a single quiz question.
 interface QuizQuestion {
+  id: number;
   question: string;
   choices: string[];
-  answer: string;
+  // The correct answer is kept only on the backend for verification.
 }
 
-// Define a type for the entire data (categories as keys).
+// Define a type for the entire quiz data organized by categories.
 interface QuizData {
   HTML: QuizQuestion[];
   CSS: QuizQuestion[];
-  // Add more categories if necessary.
+  // You can add more categories if needed.
 }
 
 function QuizComponent() {
-  // Stores the entire quiz data.
+  // State to store the complete quiz data from the server.
   const [quizData, setQuizData] = useState<QuizData | null>(null);
-  // Stores the list of questions for the chosen category.
+  // State to store the questions for the chosen category.
   const [currentQuestions, setCurrentQuestions] = useState<QuizQuestion[]>([]);
-  // Current question index.
+  // The index of the currently displayed question.
   const [currentIndex, setCurrentIndex] = useState(0);
+  // Feedback message to display whether the answer was correct or incorrect.
+  const [feedback, setFeedback] = useState<string | null>(null);
 
   useEffect(() => {
-    // Fetch the quiz data from the backend.
+    // Fetch the quiz data from your Flask API.
     fetch('http://127.0.0.1:5000/api/quiz')
       .then(response => response.json())
       .then((data: QuizData) => {
         setQuizData(data);
-        // For this example, we select the "HTML" category.
-        // You could also give your user the ability to choose a category.
+        // Here we choose the "HTML" category. You could allow the user to choose the category later.
         if (data.HTML && data.HTML.length > 0) {
           setCurrentQuestions(data.HTML);
         } else {
@@ -44,25 +46,42 @@ function QuizComponent() {
       .catch(error => console.error('Error fetching quiz data:', error));
   }, []);
 
-  // This handler is called when an answer is selected.
+  // Function to handle when an answer is selected.
   const handleAnswerClick = (selectedAnswer: string) => {
-    // Optionally, do any scoring or validation here.
-    // For example:
-    // if (selectedAnswer === currentQuestions[currentIndex].answer) { score++ }
+    // Ensure there is a current question.
+    if (!currentQuestions[currentIndex]) return;
+    
+    // Get the current question id.
+    const questionId = currentQuestions[currentIndex].id;
 
-    // Move to the next question.
-    setCurrentIndex(prevIndex => prevIndex + 1);
+    // Verify the answer with the backend.
+    fetch('http://127.0.0.1:5000/api/quiz/verify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: questionId, selected: selectedAnswer })
+    })
+      .then(response => response.json())
+      .then(data => {
+        // Show feedback based on the server's response.
+        if (data.correct) {
+          setFeedback("Correct answer!");
+        } else {
+          setFeedback("Wrong answer.");
+        }
+        // After a short delay (0.5s), clear feedback and move to the next question.
+        setTimeout(() => {
+          setFeedback(null);
+          setCurrentIndex(prevIndex => prevIndex + 1);
+        }, 500);
+      })
+      .catch(error => console.error('Error verifying answer:', error));
   };
 
-  // If questions are still loading.
-  if (currentQuestions.length === 0) {
-    return <div>Loading...</div>;
-  }
+  // While the questions are still loading.
+  if (currentQuestions.length === 0) return <div>Loading...</div>;
 
-  // If the quiz is completed.
-  if (currentIndex >= currentQuestions.length) {
-    return <div>Quiz Completed!</div>;
-  }
+  // Check if the quiz is completed.
+  if (currentIndex >= currentQuestions.length) return <div>Quiz Completed!</div>;
 
   // Get the current question.
   const currentQuestion = currentQuestions[currentIndex];
@@ -73,13 +92,14 @@ function QuizComponent() {
       <ul>
         {currentQuestion.choices.map((choice, index) => (
           <li key={index}>
-            {/* Each answer is a button that, when clicked, calls the handler */}
             <button onClick={() => handleAnswerClick(choice)}>
               {choice}
             </button>
           </li>
         ))}
       </ul>
+      {/* Display the feedback message if it exists */}
+      {feedback && <p>{feedback}</p>}
     </div>
   );
 }
