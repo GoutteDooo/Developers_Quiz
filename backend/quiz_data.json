@@ -460,5 +460,139 @@
       ],
       "answer": "Ca crée un \"♥\" à gauche de chaque élément a"
     }
+  ],
+  "CSS2": [
+    {
+      "id": 1,
+      "question": "Quelle directive SCSS est utilisée pour importer des fichiers partagés ?",
+      "choices": [
+        "@import",
+        "@include",
+        "@use",
+        "@summonTheCode"
+      ],
+      "answer": "@import"
+    },
+    {
+      "id": 2,
+      "question": "Comment déclarer une variable SCSS pour la couleur principale d’un site ?",
+      "choices": [
+        "$primary-color: #3498db;",
+        "var(--primary-color: #3498db);",
+        "--primary-color: #3498db;",
+        "colorIsLife=\"#3498db\""
+      ],
+      "answer": "$primary-color: #3498db;"
+    },
+    {
+      "id": 3,
+      "question": "Quelle fonction SCSS ajuste la transparence d’une couleur ?",
+      "choices": [
+        "rgba()",
+        "fade-out()",
+        "opacity()",
+        "magicTransparency()"
+      ],
+      "answer": "rgba()"
+    },
+    {
+      "id": 4,
+      "question": "Quel est l’ordre correct pour les arguments de margin en CSS shorthand ?",
+      "choices": [
+        "top, right, bottom, left",
+        "left, right, top, bottom",
+        "top, bottom, left, right",
+        "whereverItLooksGood"
+      ],
+      "answer": "top, right, bottom, left"
+    },
+    {
+      "id": 5,
+      "question": "Comment peut-on imbriquer des sélecteurs en SASS ?",
+      "choices": [
+        "En utilisant &",
+        "En utilisant @mixin",
+        "Avec des doubles crochets [[...]]",
+        "Avec intothevoid"
+      ],
+      "answer": "En utilisant &"
+    },
+    {
+      "id": 6,
+      "question": "Quel est le comportement de & en SCSS lorsqu’il est utilisé avec des pseudo-classes ?",
+      "choices": [
+        "Il fait référence au parent et se concatène avec les pseudo-classes",
+        "Il est ignoré",
+        "Il remplace la pseudo-classe",
+        "Il se transforme en super-héros"
+      ],
+      "answer": "Il fait référence au parent et se concatène avec les pseudo-classes"
+    },
+    {
+      "id": 7,
+      "question": "Quelle méthode permet de réutiliser du code CSS avec des paramètres en SASS ?",
+      "choices": [
+        "@mixin",
+        "@function",
+        "@reuse",
+        "@code_dance_party"
+      ],
+      "answer": "@mixin"
+    },
+    {
+      "id": 8,
+      "question": "Quelle est la syntaxe correcte pour une boucle for en SCSS ?",
+      "choices": [
+        "@for $i from 1 through 5",
+        "@loop $i to 5",
+        "for($i=1; $i<=5; $i++)",
+        "letTheLoopBegin"
+      ],
+      "answer": "@for $i from 1 through 5"
+    },
+    {
+      "id": 9,
+      "question": "Comment modifier une couleur en ajustant uniquement sa luminosité en SCSS ?",
+      "choices": [
+        "lighten($color, 20%)",
+        "opacity($color, 0.2)",
+        "rgba($color, 0.8)",
+        "addSunshine($color)"
+      ],
+      "answer": "lighten($color, 20%)"
+    },
+    {
+      "id": 10,
+      "question": "Quelle fonction CSS permet de définir plusieurs fonds d'écran sur un seul élément ?",
+      "choices": [
+        "background-image: url(...), url(...);",
+        "multi-background: url(...);",
+        "backgrounds: urls(...)",
+        "background-party"
+      ],
+      "answer": "background-image: url(...), url(...);"
+    },
+    {
+      "id": 11,
+      "question": "En SCSS, si deux fichiers possèdent le même sélecteur, quelle va être la réaction du CSS compilé ?",
+      "choices": [
+        "Il n'y aura que le body du dernier fichier importé",
+        "Il n'y aura que le body du premier fichier importé",
+        "Le CSS prendra les deux bodys et en fera un mix.",
+        "Il deviendra trouble comme de l'eau de chaux !"
+      ],
+      "answer": "Il deviendra trouble comme de l'eau de chaux !"
+    },
+    {
+      "id": 12,
+      "question": "Parmi ces réponses, laquelle est la bonne ?",
+      "choices": [
+        "font-size: $main * 0.8;",
+        "color: #000000 + 80;",
+        "background: rgb(0,0,0) + rgb(80,80,80);",
+        "Celle-ci."
+      ],
+      "answer": "font-size: $main * 0.8;"
+    }
   ]
 }
