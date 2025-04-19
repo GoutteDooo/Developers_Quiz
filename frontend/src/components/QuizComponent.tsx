@@ -53,6 +53,7 @@ function QuizComponent() {
     })
     .catch(error => console.error('Error fetching quiz data:', error));
   }, []);
+  console.log(currentIndex, currentQuestions.length);
 
 
   // Start/reset timer on each new question
@@ -77,13 +78,10 @@ function QuizComponent() {
     return () => {
       if (timerRef.current !== undefined) clearInterval(timerRef.current);
     };
-  }, [currentIndex, categoryIndex]);
+  }, [currentIndex, categoryIndex, currentQuestions]);
 
   /* 2) Unified submit function */ 
   const submitAnswer = (selected: string | null, timeElapsed: number) => {
-
-    console.log(currentIndex, currentQuestions.length);
-    
     if (currentIndex < 0 || currentIndex >= currentQuestions.length) {
       return;
     }
