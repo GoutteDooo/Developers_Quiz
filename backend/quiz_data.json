@@ -594,5 +594,326 @@
       ],
       "answer": "font-size: $main * 0.8;"
     }
+  ],
+  "JS": [
+    {
+      "id": 1,
+      "question": "Comment afficher un message dans la console en JavaScript ?",
+      "choices": [
+        "console.log()",
+        "print()",
+        "message()",
+        "miroir-miroir()"
+      ],
+      "answer": "console.log()"
+    },
+    {
+      "id": 2,
+      "question": "Quelle méthode est utilisée pour interagir avec un élément par son ID ?",
+      "choices": [
+        "document.getElementById()",
+        "document.querySelectorId()",
+        "document.selectElementId()",
+        "document.whatsYourName()"
+      ],
+      "answer": "document.getElementById()"
+    },
+    {
+      "id": 3,
+      "question": "Quelle syntaxe permet de déclarer une fonction en JavaScript ?",
+      "choices": [
+        "function maFonction() {}",
+        "let maFonction() {}",
+        "const maFonction() {}",
+        "abracadabra() {}"
+      ],
+      "answer": "function maFonction() {}"
+    },
+    {
+      "id": 4,
+      "question": "Quelle méthode est utilisée pour ajouter un élément à la fin d’un tableau ?",
+      "choices": [
+        "push()",
+        "append()",
+        "add()",
+        "ramèneTaFraise()"
+      ],
+      "answer": "push()"
+    },
+    {
+      "id": 5,
+      "question": "Comment créer un objet en JavaScript ?",
+      "choices": [
+        "let objet = {}",
+        "let objet = newObject()",
+        "let objet = new Object",
+        "et_paf_ca_fait_des_chocapics"
+      ],
+      "answer": "let objet = {}"
+    },
+    {
+      "id": 6,
+      "question": "Quelle est la valeur par défaut d’une variable non initialisée en JavaScript ?",
+      "choices": [
+        "undefined",
+        "null",
+        "NaN",
+        "pas_encore_la"
+      ],
+      "answer": "undefined"
+    },
+    {
+      "id": 7,
+      "question": "Quelle méthode est utilisée pour convertir une chaîne de caractères en nombre ?",
+      "choices": [
+        "parseInt()",
+        "parseFloat()",
+        "Number()",
+        "transformation()"
+      ],
+      "answer": "parseInt()"
+    },
+    {
+      "id": 8,
+      "question": "Quelle structure permet de boucler tant qu’une condition est vraie ?",
+      "choices": [
+        "while",
+        "for",
+        "if",
+        "twister()"
+      ],
+      "answer": "while"
+    },
+    {
+      "id": 9,
+      "question": "Quelle méthode est utilisée pour ajouter un événement à un élément HTML ?",
+      "choices": [
+        "addEventListener()",
+        "document.appendChild()",
+        "onClick()",
+        "add_to_calendar()"
+      ],
+      "answer": "addEventListener()"
+    },
+    {
+      "id": 10,
+      "question": "Quelle méthode permet de vérifier si un tableau contient un élément spécifique ?",
+      "choices": [
+        "includes()",
+        "filter()",
+        "forEach()",
+        "detection_en_cours()"
+      ],
+      "answer": "includes()"
+    },
+    {
+      "id": 11,
+      "question": "Quelle méthode permet de parcourir les éléments d’un tableau en JavaScript ?",
+      "choices": [
+        "forEach()",
+        "map()",
+        "filter()",
+        "tournicoti()"
+      ],
+      "answer": "forEach()"
+    },
+    {
+      "id": 12,
+      "question": "Quelle est la sortie de typeof null en JavaScript ?",
+      "choices": [
+        "object",
+        "null",
+        "undefined",
+        "black_hole"
+      ],
+      "answer": "object"
+    },
+    {
+      "id": 13,
+      "question": "Comment déclarer une variable en JavaScript ?",
+      "choices": [
+        "let",
+        "variable",
+        "constant",
+        "je_declare"
+      ],
+      "answer": "let"
+    },
+    {
+      "id": 14,
+      "question": "Quelle méthode retourne l’index d’un élément dans un tableau ?",
+      "choices": [
+        "indexOf()",
+        "findIndex()",
+        "find()",
+        "index_hunter()"
+      ],
+      "answer": "indexOf()"
+    },
+    {
+      "id": 15,
+      "question": "Que renvoie NaN en JavaScript ?",
+      "choices": [
+        "Not a Number",
+        "Null and None",
+        "New and Nested",
+        "Un acronyme pour 'N'importe quoi, Absolument N'importe quoi.'"
+      ],
+      "answer": "Not a Number"
+    },
+    {
+      "id": 16,
+      "question": "Quelle méthode permet de convertir un objet en chaîne JSON ?",
+      "choices": [
+        "JSON.stringify()",
+        "JSON.parse()",
+        "Object.toJSON()",
+        "conversion_JSON()"
+      ],
+      "answer": "JSON.stringify()"
+    },
+    {
+      "id": 17,
+      "question": "Comment vérifier si une variable est undefined ?",
+      "choices": [
+        "typeof(variable) === \"undefined\"",
+        "variable === \"undefined\"",
+        "variable == null",
+        "variable_undefined?()"
+      ],
+      "answer": "typeof(variable) === \"undefined\""
+    },
+    {
+      "id": 18,
+      "question": "Quelle est la sortie de 1 + \"2\" en JavaScript ?",
+      "choices": [
+        "\"12\"",
+        "\"1b\"",
+        "NaN",
+        "ca_ne_va_pas"
+      ],
+      "answer": "\"12\""
+    },
+    {
+      "id": 19,
+      "question": "Quelle fonction est utilisée pour temporiser l’exécution d’un code ?",
+      "choices": [
+        "setTimeout()",
+        "delay()",
+        "wait()",
+        "have-a-kitkat()"
+      ],
+      "answer": "setTimeout()"
+    },
+    {
+      "id": 20,
+      "question": "Quel symbole termine une ligne de code en JavaScript ?",
+      "choices": [
+        ";",
+        ".",
+        ":",
+        "!#?%*$:P"
+      ],
+      "answer": ";"
+    },
+    {
+      "id": 21,
+      "question": "À quoi sert console.log ?",
+      "choices": [
+        "Afficher des informations dans la console",
+        "Ajouter une ligne",
+        "Stocker des données",
+        "A allumer la Playstation"
+      ],
+      "answer": "Afficher des informations dans la console"
+    },
+    {
+      "id": 22,
+      "question": "Comment ajouter un commentaire sur une ligne en JavaScript ?",
+      "choices": [
+        "// Commentaire",
+        "# Commentaire",
+        "-- Commentaire",
+        "Je préfère commenter sur Youtube"
+      ],
+      "answer": "// Commentaire"
+    },
+    {
+      "id": 23,
+      "question": "Que signifie === en JavaScript ?",
+      "choices": [
+        "Comparaison stricte",
+        "Comparaison souple",
+        "Comparaison égalitaire",
+        "Que je dois aller réviser mon JS"
+      ],
+      "answer": "Comparaison stricte"
+    },
+    {
+      "id": 24,
+      "question": "Quel opérateur permet d’ajouter 1 à une variable ?",
+      "choices": [
+        "++",
+        "+",
+        "add(1)",
+        "devient_plus_fort()"
+      ],
+      "answer": "++"
+    },
+    {
+      "id": 25,
+      "question": "Quelle méthode convertit une chaîne de caractères en majuscules ?",
+      "choices": [
+        "toUpperCase()",
+        "toCaps()",
+        "makeUpper()",
+        "shoutLoud"
+      ],
+      "answer": "toUpperCase()"
+    },
+    {
+      "id": 26,
+      "question": "Comment arrondir un nombre à l'entier supérieur en JavaScript ?",
+      "choices": [
+        "Math.ceil()",
+        "Math.floor()",
+        "Math.roundUp()",
+        "WhyRoundWhenYouCanFly"
+      ],
+      "answer": "Math.ceil()"
+    },
+    {
+      "id": 27,
+      "question": "Si je fais un 'console.log(window.scrollY);' au chargement de la page, qu'est-ce qui va apparaître à l'écran ?",
+      "choices": [
+        "0",
+        "undefined",
+        "Error: ScrollYInitializationError",
+        "Je préfère aller scroll sur TikTok."
+      ],
+      "answer": "0"
+    },
+    {
+      "id": 28,
+      "question": "Que se passe-t-il dans la console avec cette ligne de code : \"console.log(new Date())\"?",
+      "choices": [
+        "La date actuelle est affichée",
+        "La console affiche \"New Object type: Date\"",
+        "La console affiche un message d'erreur demandant la date à laquelle l'on veut faire référence",
+        "Une datte apparaît"
+      ],
+      "answer": "La date actuelle est affichée"
+    },
+    {
+      "id": 29,
+      "question": "Quelle est la principale différence entre innerHTML et innerText ?",
+      "choices": [
+        "innerHTML écrit du code HTML tandis que innerText n'écrit que du texte",
+        "innerHTML inclu toutes les balises HTML alors qu'innerText n'inclu que des balises de texte",
+        "innerHTML permet d'écrire dans le body tandis qu'innerText n'écrit que dans une balise même",
+        "Je pense qu'il y'a innheure ou HTML peut servir de Text."
+      ],
+      "answer": "innerHTML écrit du code HTML tandis que innerText n'écrit que du texte"
+    }
   ]
 }
