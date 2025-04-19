@@ -113,7 +113,7 @@ function QuizComponent() {
     .then(data => {
       //update score from server
       setScore(data.score);
-      
+
       // Show feedback based on the server's response.
       setFeedback(
         data.reason === 'timeout' ?
