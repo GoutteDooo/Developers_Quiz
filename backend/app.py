@@ -17,7 +17,8 @@ def get_quiz():
 # Endpoint to verify the answer submitted by the client
 @app.route('/api/quiz/verify', methods=['POST'])
 def verify_answer():
-    submitted = request.json  # expecting a JSON like {"id":1, "selected": "<h1>"}
+    # expecting a JSON request like {"id":1, "selected": "<h1>"}
+    submitted = request.json
     question_id = submitted.get("id")
     selected_answer = submitted.get("selected")
     

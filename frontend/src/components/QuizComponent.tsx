@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 // Define a type for a single quiz question.
 interface QuizQuestion {
@@ -17,7 +17,7 @@ interface QuizData {
 
 function QuizComponent() {
   // State to store the complete quiz data from the server.
-  const [quizData, setQuizData] = useState<QuizData | null>(null);
+  const [, setQuizData] = useState<QuizData | null>(null);
   // State to store the questions for the chosen category.
   const [currentQuestions, setCurrentQuestions] = useState<QuizQuestion[]>([]);
   // The index of the currently displayed question.
@@ -25,6 +25,7 @@ function QuizComponent() {
   // Feedback message to display whether the answer was correct or incorrect.
   const [feedback, setFeedback] = useState<string | null>(null);
 
+  /* INITIALIZATION OF quizData STATE */
   useEffect(() => {
     // Fetch the quiz data from your Flask API.
     fetch('http://127.0.0.1:5000/api/quiz')
@@ -46,6 +47,7 @@ function QuizComponent() {
       .catch(error => console.error('Error fetching quiz data:', error));
   }, []);
 
+
   // Function to handle when an answer is selected.
   const handleAnswerClick = (selectedAnswer: string) => {
     // Ensure there is a current question.
@@ -64,7 +66,7 @@ function QuizComponent() {
       .then(data => {
         // Show feedback based on the server's response.
         if (data.correct) {
-          setFeedback("Correct answer!");
+          setFeedback(`Correct answer!`);
         } else {
           setFeedback("Wrong answer.");
         }
@@ -99,7 +101,7 @@ function QuizComponent() {
         ))}
       </ul>
       {/* Display the feedback message if it exists */}
-      {feedback && <p>{feedback}</p>}
+      {feedback && <h3>{feedback}</h3>}
     </div>
   );
 }
