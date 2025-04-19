@@ -17,13 +17,14 @@ def get_quiz():
 # Endpoint to verify the answer submitted by the client
 @app.route('/api/quiz/verify', methods=['POST'])
 def verify_answer():
-    # expecting a JSON request like {"id":1, "selected": "<h1>"}
+    # expecting a JSON request like {"id":1, "category": "HTML", "selected": "<h1>"}
     submitted = request.json
     question_id = submitted.get("id")
+    category = submitted.get("category")
     selected_answer = submitted.get("selected")
     
     # Find the question by id in the stored quiz data (here, in the HTML category)
-    question = next((q for q in quiz_data["HTML"] if q["id"] == question_id), None)
+    question = next((q for q in quiz_data[category] if q["id"] == question_id), None)
     if question and selected_answer == question["answer"]:
         return jsonify({"correct": True})
     return jsonify({"correct": False})

@@ -17,7 +17,11 @@ interface QuizData {
 
 function QuizComponent() {
   // State to store the complete quiz data from the server.
-  const [, setQuizData] = useState<QuizData | null>(null);
+  const [quizData, setQuizData] = useState<QuizData | null>(null);
+  // State to store the categories of the quiz.
+  const [categories, setCategories] = useState<string[]>([]);
+  // State to track the current category
+  const [categoryIndex, setCategoryIndex] = useState(0);
   // State to store the questions for the chosen category.
   const [currentQuestions, setCurrentQuestions] = useState<QuizQuestion[]>([]);
   // The index of the currently displayed question.
@@ -29,25 +33,21 @@ function QuizComponent() {
   useEffect(() => {
     // Fetch the quiz data from your Flask API.
     fetch('http://127.0.0.1:5000/api/quiz')
-      .then(response => response.json())
-      .then((data: QuizData) => {
-        setQuizData(data);
-        // Here we choose the "HTML" category. You could allow the user to choose the category later.
-        if (data.HTML && data.HTML.length > 0) {
-          setCurrentQuestions(data.HTML);
-        } else {
-          // As a fallback, combine questions from all categories.
-          const allQuestions: QuizQuestion[] = [];
-          Object.values(data).forEach((questions) => {
-            allQuestions.push(...questions);
-          });
-          setCurrentQuestions(allQuestions);
-        }
+    .then(response => response.json())
+    .then((data: QuizData) => {
+      setQuizData(data);
+      setCategories(Object.keys(data));
+      setCategoryIndex(0);
+        // As a fallback, combine questions from all categories.
+        const allQuestions: QuizQuestion[] = [];
+        Object.values(data).forEach((questions) => {
+          allQuestions.push(...questions);
+        });
+        setCurrentQuestions(allQuestions);
       })
-      .catch(error => console.error('Error fetching quiz data:', error));
+    .catch(error => console.error('Error fetching quiz data:', error));
   }, []);
-
-
+  
   // Function to handle when an answer is selected.
   const handleAnswerClick = (selectedAnswer: string) => {
     // Ensure there is a current question.
@@ -60,23 +60,23 @@ function QuizComponent() {
     fetch('http://127.0.0.1:5000/api/quiz/verify', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id: questionId, selected: selectedAnswer })
+      body: JSON.stringify({ id: questionId, category: categories[categoryIndex], selected: selectedAnswer })
     })
-      .then(response => response.json())
-      .then(data => {
-        // Show feedback based on the server's response.
-        if (data.correct) {
-          setFeedback(`Correct answer!`);
-        } else {
-          setFeedback("Wrong answer.");
-        }
-        // After a short delay (0.5s), clear feedback and move to the next question.
-        setTimeout(() => {
-          setFeedback(null);
-          setCurrentIndex(prevIndex => prevIndex + 1);
-        }, 500);
-      })
-      .catch(error => console.error('Error verifying answer:', error));
+    .then(response => response.json())
+    .then(data => {
+      // Show feedback based on the server's response.
+      if (data.correct) {
+        setFeedback(`Correct answer!`);
+      } else {
+        setFeedback("Wrong answer.");
+      }
+      // After a short delay (0.5s), clear feedback and move to the next question.
+      setTimeout(() => {
+        setFeedback(null);
+        setCurrentIndex(prevIndex => prevIndex + 1);
+      }, 500);
+    })
+    .catch(error => console.error('Error verifying answer:', error));
   };
 
   // While the questions are still loading.
