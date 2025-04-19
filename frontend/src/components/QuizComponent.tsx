@@ -61,7 +61,7 @@ function QuizComponent() {
     setRemainingTime(MAX_TIME);
     if (timerRef.current) clearInterval(timerRef.current);
 
-    timerRef.current = window.setInterval(() => {
+    timerRef.current = setInterval(() => {
       setRemainingTime(t => {
         if (t <= 1) {
           clearInterval(timerRef.current);
@@ -81,9 +81,16 @@ function QuizComponent() {
 
   /* 2) Unified submit function */ 
   const submitAnswer = (selected: string | null, timeElapsed: number) => {
+
+    console.log(currentIndex, currentQuestions.length);
+    
+    if (currentIndex < 0 || currentIndex >= currentQuestions.length) {
+      return;
+    }
+
     // stop timer
     if (timerRef.current) clearInterval(timerRef.current);
-    
+
     const question = currentQuestions[currentIndex];
     // Post the answer to the server and verify it.
     fetch('http://127.0.0.1:5000/api/quiz/verify', {
@@ -96,7 +103,10 @@ function QuizComponent() {
         selected 
       })
     })
-    .then(response => response.json())
+    .then(r => {
+      if (!r.ok) throw new Error(`Server returned ${r.status}`);
+      return r.json();
+    })
     .then(data => {
       // Show feedback based on the server's response.
       setFeedback(

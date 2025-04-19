@@ -27,7 +27,7 @@ def verify_answer():
     selected_answer = submitted.get("selected")
 
     #check time out
-    if time_elapsed > MAX_TIME:
+    if time_elapsed > MAX_TIME or selected_answer is None:
         return jsonify({"correct": False, "reason": "timeout"})
     
     # Find the question by id in the stored quiz data (here, in the HTML category)
