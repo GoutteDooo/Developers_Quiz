@@ -1027,5 +1027,350 @@
       ],
       "answer": "false"
     }
+  ],
+  "LINUX": [
+    {
+      "id": 1,
+      "question": "Quelle commande permet de lister les fichiers dans un répertoire ?",
+      "choices": [
+        "ls",
+        "list",
+        "dir",
+        "regarde_moi_tout_ca"
+      ],
+      "answer": "ls"
+    },
+    {
+      "id": 2,
+      "question": "Quelle commande est utilisée pour changer de répertoire ?",
+      "choices": [
+        "cd",
+        "mv",
+        "path",
+        "téléportation()"
+      ],
+      "answer": "cd"
+    },
+    {
+      "id": 3,
+      "question": "Comment créer un nouveau fichier dans le terminal ?",
+      "choices": [
+        "touch",
+        "create",
+        "makefile",
+        "creer_qqch"
+      ],
+      "answer": "touch"
+    },
+    {
+      "id": 4,
+      "question": "Quelle commande est utilisée pour afficher le chemin actuel ?",
+      "choices": [
+        "pwd",
+        "ls",
+        "cat",
+        "ousuisje"
+      ],
+      "answer": "pwd"
+    },
+    {
+      "id": 5,
+      "question": "Comment supprimer un fichier avec le terminal Linux ?",
+      "choices": [
+        "rm",
+        "delete",
+        "dl",
+        "goodbyemyfriend"
+      ],
+      "answer": "rm"
+    },
+    {
+      "id": 6,
+      "question": "Quelle commande permet de copier un fichier ?",
+      "choices": [
+        "cp",
+        "copy",
+        "duplicate",
+        "clone_moi_ca"
+      ],
+      "answer": "cp"
+    },
+    {
+      "id": 7,
+      "question": "Quelle commande est utilisée pour afficher le contenu d’un fichier texte ?",
+      "choices": [
+        "cat",
+        "show",
+        "read",
+        "ouvrir_parchemin"
+      ],
+      "answer": "cat"
+    },
+    {
+      "id": 8,
+      "question": "Quelle commande permet de déplacer un fichier ?",
+      "choices": [
+        "mv",
+        "move",
+        "go",
+        "taxi"
+      ],
+      "answer": "mv"
+    },
+    {
+      "id": 9,
+      "question": "Comment exécuter un script bash ?",
+      "choices": [
+        "./script.sh",
+        "run script.sh",
+        "exec script.sh",
+        "en_avant_le_show"
+      ],
+      "answer": "./script.sh"
+    },
+    {
+      "id": 10,
+      "question": "Quelle commande est utilisée pour redémarrer le système ?",
+      "choices": [
+        "reboot",
+        "restart",
+        "shutdown -r",
+        "en_voiture_simone"
+      ],
+      "answer": "reboot"
+    },
+    {
+      "id": 11,
+      "question": "Quelle commande est utilisée pour afficher les processus actifs ?",
+      "choices": [
+        "top",
+        "ps",
+        "htop",
+        "espionnage_du_CPU"
+      ],
+      "answer": "top"
+    },
+    {
+      "id": 12,
+      "question": "À quoi sert la commande chmod ?",
+      "choices": [
+        "Modifier les permissions d’un fichier",
+        "Afficher le contenu d’un fichier",
+        "Copier un fichier",
+        "Mettre à chauffer la pizza dans le four."
+      ],
+      "answer": "Modifier les permissions d’un fichier"
+    },
+    {
+      "id": 13,
+      "question": "Quelle commande utiliser parmi les suivantes pour revenir d'un répertoire en arrière ?",
+      "choices": [
+        "cd ..",
+        "cd /",
+        "cd ./",
+        "marche-arriere"
+      ],
+      "answer": "cd .."
+    },
+    {
+      "id": 14,
+      "question": "A quoi sert la commande ssh (secure shell) ?",
+      "choices": [
+        "A se connecter sur un serveur distant",
+        "A compresser un fichier",
+        "A crypter un fichier afin de le sécuriser",
+        "A se brosser les dents."
+      ],
+      "answer": "A se connecter sur un serveur distant"
+    },
+    {
+      "id": 15,
+      "question": "Lorsque j'utilise la commande \"cd /\", que se passe-t-il exactement ?",
+      "choices": [
+        "On retourne au répertoire racine",
+        "On retourne d'un répertoire en arrière",
+        "Le terminal demande dans quel répertoire l'on veut aller",
+        "Tu insères un cd rayé dans le lecteur dvd."
+      ],
+      "answer": "On retourne au répertoire racine"
+    },
+    {
+      "id": 16,
+      "question": "A quoi sert la commande gzip ?",
+      "choices": [
+        "A compresser un fichier en .gzip",
+        "A décompresser un fichier .zip",
+        "A compresser un fichier en .zip",
+        "A sortir ses bijoux les plus précieux"
+      ],
+      "answer": "A compresser un fichier en .gzip"
+    },
+    {
+      "id": 17,
+      "question": "Lorsque j'utilise la commande 'echo texte', que se passe-t-il ?",
+      "choices": [
+        "le terminal affiche text",
+        "le terminal crée une variable temporaire text et nous demande d'y insérer ce que l'on veut",
+        "Ca effectue une recherche dans les répertoires et sous-répertoires un fichier du nom de text",
+        "le terminal se met à nous parler en ch'ti"
+      ],
+      "answer": "le terminal affiche text"
+    }
+  ],
+  "LINUX2": [
+    {
+      "id": 1,
+      "question": "Comment afficher les 10 premières lignes d’un fichier ?",
+      "choices": [
+        "head",
+        "first10",
+        "tail",
+        "Les-Dix-1ere-Stp"
+      ],
+      "answer": "head"
+    },
+    {
+      "id": 2,
+      "question": "Quelle commande permet de rechercher un mot dans un fichier ?",
+      "choices": [
+        "grep",
+        "find",
+        "locate",
+        "sherlock-mot(mot)"
+      ],
+      "answer": "grep"
+    },
+    {
+      "id": 3,
+      "question": "Comment afficher la date et l’heure actuelles ?",
+      "choices": [
+        "date",
+        "time",
+        "now",
+        "Je regarde l'heure sur le téléphone."
+      ],
+      "answer": "date"
+    },
+    {
+      "id": 4,
+      "question": "Quelle commande affiche les processus en cours ?",
+      "choices": [
+        "ps",
+        "proc",
+        "run",
+        "¿Qué pasa?"
+      ],
+      "answer": "ps"
+    },
+    {
+      "id": 5,
+      "question": "Quelle commande permet de rechercher un mot dans plusieurs fichiers et sous-dossiers ?",
+      "choices": [
+        "grep -r",
+        "grep",
+        "search -all",
+        "find_my_lost_files"
+      ],
+      "answer": "grep -r"
+    },
+    {
+      "id": 6,
+      "question": "Comment exécuter une commande avec des privilèges root ?",
+      "choices": [
+        "sudo",
+        "root",
+        "admin",
+        "justTrustMe"
+      ],
+      "answer": "sudo"
+    },
+    {
+      "id": 7,
+      "question": "Quelle commande affiche l'espace disque disponible pour chaque partition ?",
+      "choices": [
+        "df -h",
+        "du",
+        "lsblk",
+        "pleaseGiveMeMoreSpace"
+      ],
+      "answer": "df -h"
+    },
+    {
+      "id": 8,
+      "question": "Comment sauvegarder la sortie d’une commande dans un fichier texte ?",
+      "choices": [
+        "commande > fichier.txt",
+        "save commande",
+        "commande /to fichier.txt",
+        "justRememberIt.txt"
+      ],
+      "answer": "commande > fichier.txt"
+    },
+    {
+      "id": 9,
+      "question": "Quelle commande affiche l'utilisation de la mémoire par les processus ?",
+      "choices": [
+        "top",
+        "free",
+        "memcheck",
+        "nosyNeighbor"
+      ],
+      "answer": "top"
+    },
+    {
+      "id": 10,
+      "question": "Comment lister les fichiers cachés dans un répertoire ?",
+      "choices": [
+        "ls -a",
+        "ls --hidden",
+        "dir -hidden",
+        "peekBehindTheCurtain"
+      ],
+      "answer": "ls -a"
+    },
+    {
+      "id": 11,
+      "question": "Comment afficher les permissions d’un fichier en détail ?",
+      "choices": [
+        "ls -l",
+        "chmod",
+        "perm file",
+        "showMeYourSecrets"
+      ],
+      "answer": "ls -l"
+    },
+    {
+      "id": 12,
+      "question": "Quelle commande affiche uniquement les dix dernières lignes d’un fichier ?",
+      "choices": [
+        "tail",
+        "bottom",
+        "end",
+        "finalWords"
+      ],
+      "answer": "tail"
+    },
+    {
+      "id": 13,
+      "question": "Quelle commande exécute une commande précédente sans avoir à la retaper ?",
+      "choices": [
+        "!!",
+        "again",
+        "runLast",
+        "doItAgainSam"
+      ],
+      "answer": "!!"
+    },
+    {
+      "id": 14,
+      "question": "Comment modifier l'utilisateur actif sans quitter la session ?",
+      "choices": [
+        "su",
+        "change-user",
+        "switch",
+        "I'mSomebodyElseNow"
+      ],
+      "answer": "su"
+    }
   ]
 }
