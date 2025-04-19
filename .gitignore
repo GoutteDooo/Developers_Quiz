@@ -26,3 +26,4 @@ dist-ssr
 #Flask
 backend/__pycache__/
 backend/.venv/
+backend/quiz_data.json
