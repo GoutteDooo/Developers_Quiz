@@ -31,6 +31,9 @@ function QuizComponent() {
   // State to know when the quiz is completed.
   const [quizCompleted, setQuizCompleted] = useState<boolean>(false);
 
+  // score from server
+  const [score, setScore] = useState(0);
+
   //Timer state
   const [remainingTime, setRemainingTime] = useState(MAX_TIME);
   const timerRef = useRef<number>();
@@ -38,7 +41,9 @@ function QuizComponent() {
   /* 1) Fetch and Initialize */
   useEffect(() => {
     // Fetch the quiz data from your Flask API.
-    fetch('http://127.0.0.1:5000/api/quiz')
+    fetch('http://127.0.0.1:5000/api/quiz', {
+      credentials: 'include'  // send cookie so Flask can reset session
+    })
     .then(r => r.json())
     .then((data: QuizData) => {
       setQuizData(data);
@@ -50,10 +55,11 @@ function QuizComponent() {
       if (cats.length > 0) {
         setCurrentQuestions(data[cats[0]]);
       }
+      // reset client‑side score to match server
+      setScore(0);
     })
     .catch(error => console.error('Error fetching quiz data:', error));
   }, []);
-  console.log(currentIndex, currentQuestions.length);
 
 
   // Start/reset timer on each new question
@@ -80,19 +86,18 @@ function QuizComponent() {
     };
   }, [currentIndex, categoryIndex, currentQuestions]);
 
+  
   /* 2) Unified submit function */ 
   const submitAnswer = (selected: string | null, timeElapsed: number) => {
     if (currentIndex < 0 || currentIndex >= currentQuestions.length) {
       return;
     }
 
-    // stop timer
-    if (timerRef.current) clearInterval(timerRef.current);
-
     const question = currentQuestions[currentIndex];
     // Post the answer to the server and verify it.
     fetch('http://127.0.0.1:5000/api/quiz/verify', {
       method: 'POST',
+      credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         id: question.id, 
@@ -106,6 +111,9 @@ function QuizComponent() {
       return r.json();
     })
     .then(data => {
+      //update score from server
+      setScore(data.score);
+      
       // Show feedback based on the server's response.
       setFeedback(
         data.reason === 'timeout' ?
@@ -117,27 +125,33 @@ function QuizComponent() {
       // After a short delay (0.5s), clear feedback and move to the next question.
       setTimeout(() => {
         setFeedback(null);
-
-        const nextQuestion = currentIndex + 1;
-        //If more questions in this category, just advance
-        if (nextQuestion < currentQuestions.length) {
-          setCurrentIndex(nextQuestion);
-        } else {
-          //Otherwise, move to next category
-          const nextCat = categoryIndex + 1;
-          if (nextCat < categories.length) {
-            setCategoryIndex(nextCat);
-            setCurrentQuestions(quizData[categories[nextCat]]);
-            setCurrentIndex(0);
-          } else {
-            //If no more categories, Quiz done.
-            setQuizCompleted(true);
-          }
-        }
+        advance();
       }, 500);
     })
-    .catch(error => console.error('Error verifying answer:', error));
+    .catch(error => {
+      console.error('Error verifying answer:', error)
+      // even on error, advance quiz
+      setTimeout(advance, 500);
+    });
   };
+
+
+  const advance = () => {
+    const nextQ = currentIndex + 1;
+    if (nextQ < currentQuestions.length) {
+      setCurrentIndex(nextQ);
+    } else {
+      const nextCat = categoryIndex + 1;
+      if (quizData && nextCat < categories.length) {
+        setCategoryIndex(nextCat);
+        setCurrentQuestions(quizData[categories[nextCat]]);
+        setCurrentIndex(0);
+      } else {
+        setQuizCompleted(true);
+      }
+    }
+  };
+
 
   // Function to handle when user clicked on an answer.
   const handleAnswerClick = (selected: string) => {
@@ -152,7 +166,13 @@ function QuizComponent() {
   }
 
   // Check if the quiz is completed.
-  if (quizCompleted) return <div>🎉 Quiz Completed! 🎉</div>;
+  if (quizCompleted) return (
+    <div>
+      🎉 Quiz Completed! 🎉
+      <br/>
+      Your final score: {score}
+    </div>
+  );
 
   // Get the current question.
   const currentQuestion = currentQuestions[currentIndex];
@@ -160,20 +180,22 @@ function QuizComponent() {
 
   return (
     <div>
-      <h3><em>Category : {currentCategory}</em></h3>
+      <div>
+        <strong>Category:</strong> {currentCategory} <br/>
+        <strong>Score:</strong> {score}
+      </div>
       <h2>{currentQuestion.question}</h2>
-      <div>Time left: {remainingTime}</div>
+      <div>Time left: {remainingTime}s</div>
       <ul>
-        {currentQuestion.choices.map((choice, index) => (
-          <li key={index}>
-            <button onClick={() => handleAnswerClick(choice)}>
-              {choice}
+        {currentQuestion.choices.map((c, i) => (
+          <li key={i}>
+            <button onClick={() => handleAnswerClick(c)} disabled={!!feedback}>
+              {c}
             </button>
           </li>
         ))}
       </ul>
-      {/* Display the feedback message if it exists */}
-      {feedback && <h3>{feedback}</h3>}
+      {feedback && <p>{feedback}</p>}
     </div>
   );
 }
