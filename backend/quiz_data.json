@@ -1372,5 +1372,350 @@
       ],
       "answer": "su"
     }
+  ],
+  "MARKDOWN": [
+    {
+      "id": 1,
+      "question": "Comment créer un titre de premier niveau en Markdown ?",
+      "choices": [
+        "# Titre",
+        "- Titre",
+        "= Titre",
+        "💥 SuperTitre"
+      ],
+      "answer": "# Titre"
+    },
+    {
+      "id": 2,
+      "question": "Comment ajouter un lien hypertexte en Markdown ?",
+      "choices": [
+        "[Texte](URL)",
+        "<a href=\"URL\">Texte</a>",
+        "[Texte]: URL",
+        "[clic_magic]"
+      ],
+      "answer": "[Texte](URL)"
+    },
+    {
+      "id": 3,
+      "question": "Comment créer une liste non ordonnée en Markdown ?",
+      "choices": [
+        "* élément",
+        "1. élément",
+        "- élément",
+        "[liste de courses]"
+      ],
+      "answer": "* élément"
+    },
+    {
+      "id": 4,
+      "question": "Comment formater du texte en gras en Markdown ?",
+      "choices": [
+        "**texte**",
+        "*texte*",
+        "_texte_",
+        "💪 strong_text"
+      ],
+      "answer": "**texte**"
+    },
+    {
+      "id": 5,
+      "question": "Comment créer un bloc de code en Markdown ?",
+      "choices": [
+        "`code`",
+        "<code>",
+        "{code}",
+        "💻 balise_magique"
+      ],
+      "answer": "`code`"
+    },
+    {
+      "id": 6,
+      "question": "Comment ajouter une image en Markdown ?",
+      "choices": [
+        "![alt](URL)",
+        "<img src=\"URL\" alt=\"alt\">",
+        "[alt](URL)",
+        "🖼️_picto_fantaisie"
+      ],
+      "answer": "![alt](URL)"
+    },
+    {
+      "id": 7,
+      "question": "Comment ajouter une citation en Markdown ?",
+      "choices": [
+        "> citation",
+        "- citation",
+        "\" citation \"",
+        "💭un_sage_a_dit_un_jour"
+      ],
+      "answer": "> citation"
+    },
+    {
+      "id": 8,
+      "question": "Comment faire une liste ordonnée en Markdown ?",
+      "choices": [
+        "1. élément",
+        "- élément",
+        "* élément",
+        "📜 belle_liste"
+      ],
+      "answer": "1. élément"
+    },
+    {
+      "id": 9,
+      "question": "Comment souligner du texte en Markdown ?",
+      "choices": [
+        "Ce n'est pas possible",
+        "__texte__",
+        "<u>texte</u>",
+        "////////// texte//////////"
+      ],
+      "answer": "Ce n'est pas possible"
+    },
+    {
+      "id": 10,
+      "question": "Comment créer une ligne horizontale en Markdown ?",
+      "choices": [
+        "--- (dashes)",
+        "___ (underscores)",
+        "***",
+        "¯\\_(ツ)_/¯"
+      ],
+      "answer": "--- (dashes)"
+    },
+    {
+      "id": 11,
+      "question": "Comment formater du texte en italique en Markdown ?",
+      "choices": [
+        "*texte*",
+        "**texte**",
+        "_texte_",
+        "🎩_texte_🎩"
+      ],
+      "answer": "*texte*"
+    },
+    {
+      "id": 12,
+      "question": "Comment créer une liste à puce en Markdown ?",
+      "choices": [
+        "- élément",
+        "* élément",
+        "= élément",
+        "Xx_?!|[liste2010]|!?_xX"
+      ],
+      "answer": "- élément"
+    }
+  ],
+  "GIT": [
+    {
+      "id": 1,
+      "question": "Quelle commande initialise un nouveau dépôt Git ?",
+      "choices": [
+        "git init",
+        "git start",
+        "git new",
+        "git fabrique_un_gite"
+      ],
+      "answer": "git init"
+    },
+    {
+      "id": 2,
+      "question": "Quelle commande permet d’ajouter des fichiers au staging area ?",
+      "choices": [
+        "git add",
+        "git stage",
+        "git prepare",
+        "git mettre_dans_le_panier"
+      ],
+      "answer": "git add"
+    },
+    {
+      "id": 3,
+      "question": "Comment confirmer des changements dans Git ?",
+      "choices": [
+        "git commit",
+        "git save",
+        "git push",
+        "git fais_le_taf"
+      ],
+      "answer": "git commit"
+    },
+    {
+      "id": 4,
+      "question": "Quelle commande permet de créer une nouvelle branche ?",
+      "choices": [
+        "git branch",
+        "git new branch",
+        "git checkout",
+        "git fais_du_bois"
+      ],
+      "answer": "git branch"
+    },
+    {
+      "id": 5,
+      "question": "Quelle commande fusionne deux branches dans Git ?",
+      "choices": [
+        "git merge",
+        "git join",
+        "git combine",
+        "git fuuuuuusion HA !"
+      ],
+      "answer": "git merge"
+    },
+    {
+      "id": 6,
+      "question": "Comment récupérer les changements d’un dépôt distant ?",
+      "choices": [
+        "git pull",
+        "git push",
+        "git clone",
+        "git oh hisse"
+      ],
+      "answer": "git pull"
+    },
+    {
+      "id": 7,
+      "question": "Quelle commande permet d’envoyer des changements vers un dépôt distant ?",
+      "choices": [
+        "git push",
+        "git send",
+        "git upload",
+        "git le_facteur_est_passé"
+      ],
+      "answer": "git push"
+    },
+    {
+      "id": 8,
+      "question": "Quelle commande affiche l’historique des commits ?",
+      "choices": [
+        "git log",
+        "git history",
+        "git commits",
+        "git ct mieux avant"
+      ],
+      "answer": "git log"
+    },
+    {
+      "id": 9,
+      "question": "Comment revenir temporairement à un commit précédent ?",
+      "choices": [
+        "git checkout",
+        "git revert",
+        "git reset",
+        "git back_to_the_futur"
+      ],
+      "answer": "git checkout"
+    },
+    {
+      "id": 10,
+      "question": "Quelle commande permet de cloner un dépôt distant ?",
+      "choices": [
+        "git clone",
+        "git copy",
+        "git download",
+        "git terminator"
+      ],
+      "answer": "git clone"
+    },
+    {
+      "id": 11,
+      "question": "A quoi sert une Pull Request ? (PR)",
+      "choices": [
+        "Permettre de proposer des changements à un dépôt distant",
+        "Permettre de récupérer des changements d'un dépôt distant",
+        "Permettre de récupérer un dépôt distant en y indiquant qu'on va y effectuer des modifs",
+        "A signaler qu'il est temps de prendre une pause café"
+      ],
+      "answer": "Permettre de proposer des changements à un dépôt distant"
+    },
+    {
+      "id": 12,
+      "question": "A quoi sert le rebase ?",
+      "choices": [
+        "A réécrire l'historique des commits d'une branche",
+        "A incorporer l'historique des commits d'une branche à une autre",
+        "A préserver l'historique de chaque branche, y compris les parallèles",
+        "À remonter le temps et corriger les erreurs avec style, mais sans DeLorean."
+      ],
+      "answer": "A réécrire l'historique des commits d'une branche"
+    },
+    {
+      "id": 13,
+      "question": "Comment vérifier l’état actuel du dépôt en Git ?",
+      "choices": [
+        "git status",
+        "git check",
+        "git show",
+        "git_comment_va_ton_code"
+      ],
+      "answer": "git status"
+    },
+    {
+      "id": 14,
+      "question": "Comment configurer le nom d’utilisateur dans Git ?",
+      "choices": [
+        "git config --global user.name",
+        "git set-username",
+        "git init-user",
+        "git_identité_secrète"
+      ],
+      "answer": "git config --global user.name"
+    },
+    {
+      "id": 15,
+      "question": "Quelle commande permet de visualiser les différences entre deux commits ?",
+      "choices": [
+        "git diff",
+        "git show",
+        "git compare",
+        "git_keléladiff"
+      ],
+      "answer": "git diff"
+    },
+    {
+      "id": 16,
+      "question": "Comment annuler un commit qui n’a pas encore été envoyé au dépôt distant ?",
+      "choices": [
+        "git reset",
+        "git undo",
+        "git uncommit",
+        "oopsIDidItAgain"
+      ],
+      "answer": "git reset"
+    },
+    {
+      "id": 17,
+      "question": "Quelle commande permet de télécharger les dernières modifications sans les fusionner ?",
+      "choices": [
+        "git fetch",
+        "git pull",
+        "git grab",
+        "git telecharge_moi_ca"
+      ],
+      "answer": "git fetch"
+    },
+    {
+      "id": 18,
+      "question": "Comment marquer un moment précis dans l’historique d’un dépôt ?",
+      "choices": [
+        "git tag",
+        "git mark",
+        "git stamp",
+        "git souviens-toi"
+      ],
+      "answer": "git tag"
+    },
+    {
+      "id": 19,
+      "question": "Quelle commande git branch permet de renommer ses branches ?",
+      "choices": [
+        "git branch -m old-name new-name",
+        "git branch -r old-name new-name",
+        "git branch --rename old-name new-name",
+        "Je supprime la branche et j'en crée une autre."
+      ],
+      "answer": "git branch -m old-name new-name"
+    }
   ]
 }
