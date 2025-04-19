@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 // Define a type for a single quiz question.
 interface QuizQuestion {
@@ -12,6 +12,8 @@ interface QuizQuestion {
 interface QuizData {
   [category: string]: QuizQuestion[];
 }
+
+const MAX_TIME = 20;
 
 function QuizComponent() {
   // State to store the complete quiz data from the server.
@@ -28,6 +30,10 @@ function QuizComponent() {
   const [feedback, setFeedback] = useState<string | null>(null);
   // State to know when the quiz is completed.
   const [quizCompleted, setQuizCompleted] = useState<boolean>(false);
+
+  //Timer state
+  const [remainingTime, setRemainingTime] = useState(MAX_TIME);
+  const timerRef = useRef<number>();
 
   /* 1) Fetch and Initialize */
   useEffect(() => {
@@ -49,23 +55,57 @@ function QuizComponent() {
   }, []);
 
 
-  /* 2) Handle the answers */
-  // Function to handle when user clicked on an answer.
-  const handleAnswerClick = (selectedAnswer: string) => {
-    // Ensure there is a current question.
-    if (!currentQuestions[currentIndex]) return;
-    const question = currentQuestions[currentIndex];
+  // Start/reset timer on each new question
+  useEffect(() => {
+    //reset
+    setRemainingTime(MAX_TIME);
+    if (timerRef.current) clearInterval(timerRef.current);
 
+    timerRef.current = window.setInterval(() => {
+      setRemainingTime(t => {
+        if (t <= 1) {
+          clearInterval(timerRef.current);
+          //time is up
+          submitAnswer(null, MAX_TIME);
+          return 0;
+        }
+        return t - 1;
+      });
+    }, 1000);
+
+    //cleanup on unmount or question change
+    return () => {
+      if (timerRef.current !== undefined) clearInterval(timerRef.current);
+    };
+  }, [currentIndex, categoryIndex]);
+
+  /* 2) Unified submit function */ 
+  const submitAnswer = (selected: string | null, timeElapsed: number) => {
+    // stop timer
+    if (timerRef.current) clearInterval(timerRef.current);
+    
+    const question = currentQuestions[currentIndex];
     // Post the answer to the server and verify it.
     fetch('http://127.0.0.1:5000/api/quiz/verify', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id: question.id, category: categories[categoryIndex], selected: selectedAnswer })
+      body: JSON.stringify({
+        id: question.id, 
+        category: categories[categoryIndex], 
+        timeElapsed,
+        selected 
+      })
     })
     .then(response => response.json())
     .then(data => {
       // Show feedback based on the server's response.
-      setFeedback(data.correct ? 'Correct answer!' : 'Wrong answer.');
+      setFeedback(
+        data.reason === 'timeout' ?
+        `Time's up!`
+        : data.correct ? 
+        'Correct!' 
+        : 'Wrong!'
+      );
       // After a short delay (0.5s), clear feedback and move to the next question.
       setTimeout(() => {
         setFeedback(null);
@@ -91,16 +131,20 @@ function QuizComponent() {
     .catch(error => console.error('Error verifying answer:', error));
   };
 
+  // Function to handle when user clicked on an answer.
+  const handleAnswerClick = (selected: string) => {
+    const elapsed = MAX_TIME - remainingTime;
+    submitAnswer(selected, elapsed);
+  };
+
   /* 3) Render conditions */
   // While the questions are still loading.
-  if (!quizData || categories.length === 0 || currentQuestions.length === 0) {
+  if (!quizData || !categories.length|| !currentQuestions.length) {
     return <div>Loading…</div>;
   }
 
   // Check if the quiz is completed.
-  if (quizCompleted) {
-    return <div>🎉 Quiz Completed! 🎉</div>;
-  }
+  if (quizCompleted) return <div>🎉 Quiz Completed! 🎉</div>;
 
   // Get the current question.
   const currentQuestion = currentQuestions[currentIndex];
@@ -110,6 +154,7 @@ function QuizComponent() {
     <div>
       <h3><em>Category : {currentCategory}</em></h3>
       <h2>{currentQuestion.question}</h2>
+      <div>Time left: {remainingTime}</div>
       <ul>
         {currentQuestion.choices.map((choice, index) => (
           <li key={index}>

@@ -22,6 +22,7 @@ function App() {
           <Home launchQuiz={launchQuiz} />
         )}
       </main>
+
     </div>
   );
 }
