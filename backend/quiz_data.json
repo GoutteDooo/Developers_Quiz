@@ -1,22 +1,369 @@
 {
   "HTML": [
     {
-      "id":1,
-      "question": "What is the HTML tag for the main title of a page ?",
-      "choices": ["<h1>", "<title>", "<li>","<BIG TITLE BOLD AND CENTERED>"], 
-      "answer": "<h1>"
+      "id": 1,
+      "question": "En HTML, quelle est la balise utilisée pour écrire le titre principal ?",
+      "choices": [
+        "<h1></h1>",
+        "<title></title>",
+        "<p></p>",
+        "<input type=\"title\" />"
+      ],
+      "answer": "<h1></h1>"
     },
     {
-      "id":2,
-      "question": "What is the HTML tag for unordered lists ?",
-      "choices": ["<ol>", "<ul>", "<li>", "<*1 /> <*2 /> <*3 /> (etc...)"],
+      "id": 2,
+      "question": "En HTML, quelle est la balise utilisée pour faire une liste non ordonnée ?",
+      "choices": [
+        "<ul></ul>",
+        "<list></list>",
+        "<order></order>",
+        "<input type=\"list\" />"
+      ],
+      "answer": "<ul></ul>"
+    },
+    {
+      "id": 3,
+      "question": "Trouver l'intrus dans cette liste",
+      "choices": [
+        "<img></img>",
+        "<ol></ol>",
+        "<h5></h5>",
+        "<th></th>"
+      ],
+      "answer": "<img></img>"
+    },
+    {
+      "id": 4,
+      "question": "Quelle balise est utilisée pour les images ?",
+      "choices": [
+        "<img />",
+        "<picture />",
+        "<pic />",
+        "<link img />"
+      ],
+      "answer": "<img />"
+    },
+    {
+      "id": 5,
+      "question": "Citez un attribut HTML lié aux images",
+      "choices": [
+        "src",
+        "class",
+        "href",
+        "img"
+      ],
+      "answer": "src"
+    },
+    {
+      "id": 6,
+      "question": "Que signifie HTML ? ",
+      "choices": [
+        "HyperText Markup Language",
+        "Hyperlink Text Management Language",
+        "Hierarchical Tagging Markup Language",
+        "How To Meet Ladies"
+      ],
+      "answer": "HyperText Markup Language"
+    },
+    {
+      "id": 7,
+      "question": "Quelle est la balise HTML correcte pour insérer un passage à la ligne ?",
+      "choices": [
+        "<br />",
+        "<nbsp />",
+        "<hr />",
+        "<passage-a-la-ligne />"
+      ],
+      "answer": "<br />"
+    },
+    {
+      "id": 8,
+      "question": "Quelle balise est utilisée pour définir les en-têtes dans un tableau ?",
+      "choices": [
+        "<th>",
+        "<td>",
+        "<theader>",
+        "<tete-du-tableau>"
+      ],
+      "answer": "<th>"
+    },
+    {
+      "id": 9,
+      "question": "Quelle balise HTML est utilisée pour créer une liste de définitions ?",
+      "choices": [
+        "<dl>",
+        "<dlist>",
+        "<del>",
+        "<définissez_vous>"
+      ],
+      "answer": "<dl>"
+    },
+    {
+      "id": 10,
+      "question": "Quelle balise HTML est utilisée pour créer un formulaire ?",
+      "choices": [
+        "<form>",
+        "<fieldset>",
+        "<input>",
+        "<boite_a_questions>"
+      ],
+      "answer": "<form>"
+    },
+    {
+      "id": 11,
+      "question": "Comment spécifier un champ obligatoire dans un formulaire HTML ?",
+      "choices": [
+        "required",
+        "mandatory",
+        "haveto",
+        "c_obligatoire"
+      ],
+      "answer": "required"
+    },
+    {
+      "id": 12,
+      "question": "Quel attribut est utilisé pour lier un label à un champ de formulaire ?",
+      "choices": [
+        "for",
+        "name",
+        "id",
+        "hello_c_moi"
+      ],
+      "answer": "for"
+    },
+    {
+      "id": 13,
+      "question": "Quelle balise HTML est utilisée pour définir une citation longue ?",
+      "choices": [
+        "<blockquote>",
+        "<quote>",
+        "<q>",
+        "<parole_de_sage>"
+      ],
+      "answer": "<blockquote>"
+    },
+    {
+      "id": 14,
+      "question": "Quel attribut permet d’ouvrir un lien dans un nouvel onglet ?",
+      "choices": [
+        "target=\"_blank\"",
+        "newtab=\"true\"",
+        "rel=\"noopener\"",
+        "sesame_ouvre_toi"
+      ],
+      "answer": "target=\"_blank\""
+    },
+    {
+      "id": 15,
+      "question": "Quelle est la structure correcte d'une table HTML ?",
+      "choices": [
+        "<table><tr><td></td></tr></table>",
+        "<table><td><tr></tr></td></table>",
+        "<table><tr><tc><td></td></tc></tr></table>",
+        "<table><diner_presque_parfait /></table>"
+      ],
+      "answer": "<table><tr><td></td></tr></table>"
+    },
+    {
+      "id": 16,
+      "question": "Comment définir un bouton en HTML ?",
+      "choices": [
+        "<button>",
+        "<input type=\"button\">",
+        "<btn>",
+        "<appuie_sur_moi>"
+      ],
+      "answer": "<button>"
+    },
+    {
+      "id": 17,
+      "question": "Quel attribut permet de spécifier le lien d’une page dans une balise <a> ?",
+      "choices": [
+        "href",
+        "src",
+        "link",
+        "redirection_dans_3_2_1"
+      ],
+      "answer": "href"
+    },
+    {
+      "id": 18,
+      "question": "À quoi sert la balise <title> ?",
+      "choices": [
+        "À ajouter le nom de la page dans l'onglet du navigateur",
+        "À ajouter un titre à l'article",
+        "À insérer un titre à une image",
+        "À afficher des blagues toto"
+      ],
+      "answer": "À ajouter le nom de la page dans l'onglet du navigateur"
+    },
+    {
+      "id": 19,
+      "question": "Quelle balise HTML définit une liste non ordonnée ?",
+      "choices": [
+        "<ul>",
+        "<li>",
+        "<ol>",
+        "<unordered>"
+      ],
       "answer": "<ul>"
     },
     {
-      "id":3,
-      "question": "Find the unknown in this list",
-      "choices": ["<h1></h1>", "<script></script>", "<img></img>", "<table></table>"], 
-      "answer": "<img></img>"
+      "id": 20,
+      "question": "Quel attribut permet d’ajouter un texte alternatif à une image ?",
+      "choices": [
+        "alt",
+        "title",
+        "description",
+        "<alternatif-texte-image>"
+      ],
+      "answer": "alt"
+    },
+    {
+      "id": 21,
+      "question": "Quelle balise HTML représente du texte important en gras ?",
+      "choices": [
+        "<strong>",
+        "<bold>",
+        "<em>",
+        "<heavystuff>"
+      ],
+      "answer": "<strong>"
+    },
+    {
+      "id": 22,
+      "question": "Quelle balise permet d’insérer un champ de texte pour l’utilisateur ?",
+      "choices": [
+        "<input type=\"text\">",
+        "<textzone>",
+        "<input type=\"textarea\">",
+        "<champdetexte>"
+      ],
+      "answer": "<input type=\"text\">"
+    },
+    {
+      "id": 23,
+      "question": "Comment commenter une ligne de code HTML ?",
+      "choices": [
+        "<!-- Commentaire -->",
+        "// Commentaire",
+        "/* Commentaire */",
+        "J'm'en fou. J'ai un raccourci VS Code."
+      ],
+      "answer": "<!-- Commentaire -->"
+    }
+  ],
+  "HTML2": [
+    {
+      "id": 1,
+      "question": "Quel attribut ARIA est utilisé pour définir le rôle principal du contenu d'une page web ?",
+      "choices": [
+        "aria-main",
+        "role=\"main\"",
+        "main-content",
+        "aria-rockstar"
+      ],
+      "answer": "aria-main"
+    },
+    {
+      "id": 2,
+      "question": "Quel attribut permet d’indiquer une description longue pour les images ?",
+      "choices": [
+        "longdesc",
+        "aria-describedby",
+        "alt",
+        "im_really_long_description"
+      ],
+      "answer": "longdesc"
+    },
+    {
+      "id": 3,
+      "question": "Quelle balise HTML est recommandée pour le sous-titrage de vidéos ?",
+      "choices": [
+        "<track>",
+        "<caption>",
+        "<subtitle>",
+        "<itadakimasu>"
+      ],
+      "answer": "<track>"
+    },
+    {
+      "id": 4,
+      "question": "Quel attribut de la balise <input> permet de limiter la saisie à des chiffres ?",
+      "choices": [
+        "inputmode=\"numeric\"",
+        "type=\"number\"",
+        "type=\"integer\"",
+        "noWordsAllowed"
+      ],
+      "answer": "inputmode=\"numeric\""
+    },
+    {
+      "id": 5,
+      "question": "Comment spécifier plusieurs fichiers JavaScript dans l'attribut srcset d’une balise <script> ?",
+      "choices": [
+        "Ce n’est pas possible avec srcset",
+        "srcset=\"fichier1.js, fichier2.js\"",
+        "scriptset=\"fichier1.js, fichier2.js\"",
+        "srcset=\"loadAllTheThings.js\""
+      ],
+      "answer": "Ce n’est pas possible avec srcset"
+    },
+    {
+      "id": 6,
+      "question": "À quoi sert l’attribut loading=\"lazy\" dans la balise <img> ?",
+      "choices": [
+        "Charger une image seulement lorsque nécessaire",
+        "Charger une image immédiatement",
+        "Désactiver le chargement de l’image",
+        "À faire la grasse matinée"
+      ],
+      "answer": "Charger une image seulement lorsque nécessaire"
+    },
+    {
+      "id": 7,
+      "question": "Quelle balise est utilisée pour regrouper des boutons de radio ?",
+      "choices": [
+        "<fieldset>",
+        "<group>",
+        "<button-group>",
+        "<radioParty>"
+      ],
+      "answer": "<fieldset>"
+    },
+    {
+      "id": 8,
+      "question": "Quel attribut de <meta> est utilisé pour le référencement international d’un site ?",
+      "choices": [
+        "hreflang",
+        "language",
+        "region",
+        "speakMultipleLanguages"
+      ],
+      "answer": "hreflang"
+    },
+    {
+      "id": 9,
+      "question": "Comment spécifier un favicon en HTML ?",
+      "choices": [
+        "<link rel=\"icon\" href=\"favicon.ico\">",
+        "<favicon src=\"favicon.ico\">",
+        "<meta icon=\"favicon.ico\">",
+        "<link rel=\"cool-look\">"
+      ],
+      "answer": "<link rel=\"icon\" href=\"favicon.ico\">"
+    },
+    {
+      "id": 10,
+      "question": "Quelle balise permet d’ajouter du code pour une PWA (Progressive Web App) ?",
+      "choices": [
+        "<manifest>",
+        "<script type=\"pwa\">",
+        "<meta pwa=\"true\">",
+        "<addMagicHere>"
+      ],
+      "answer": "<manifest>"
     }
   ],
   "CSS": [
