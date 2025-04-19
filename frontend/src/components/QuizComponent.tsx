@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Define a type for a single quiz question.
 interface QuizQuestion {
@@ -10,9 +10,7 @@ interface QuizQuestion {
 
 // Define a type for the entire quiz data organized by categories.
 interface QuizData {
-  HTML: QuizQuestion[];
-  CSS: QuizQuestion[];
-  // You can add more categories if needed.
+  [category: string]: QuizQuestion[];
 }
 
 function QuizComponent() {
@@ -28,68 +26,89 @@ function QuizComponent() {
   const [currentIndex, setCurrentIndex] = useState(0);
   // Feedback message to display whether the answer was correct or incorrect.
   const [feedback, setFeedback] = useState<string | null>(null);
+  // State to know when the quiz is completed.
+  const [quizCompleted, setQuizCompleted] = useState<boolean>(false);
 
-  /* INITIALIZATION OF quizData STATE */
+  /* 1) Fetch and Initialize */
   useEffect(() => {
     // Fetch the quiz data from your Flask API.
     fetch('http://127.0.0.1:5000/api/quiz')
-    .then(response => response.json())
+    .then(r => r.json())
     .then((data: QuizData) => {
       setQuizData(data);
-      setCategories(Object.keys(data));
-      setCategoryIndex(0);
-        // As a fallback, combine questions from all categories.
-        const allQuestions: QuizQuestion[] = [];
-        Object.values(data).forEach((questions) => {
-          allQuestions.push(...questions);
-        });
-        setCurrentQuestions(allQuestions);
-      })
+      const cats = Object.keys(data);
+      setCategories(cats);
+
+      //fill the currentQuestions state with the first question of the first category
+      // Here, it is : "CSS"
+      if (cats.length > 0) {
+        setCurrentQuestions(data[cats[0]]);
+      }
+    })
     .catch(error => console.error('Error fetching quiz data:', error));
   }, []);
-  
-  // Function to handle when an answer is selected.
+
+
+  /* 2) Handle the answers */
+  // Function to handle when user clicked on an answer.
   const handleAnswerClick = (selectedAnswer: string) => {
     // Ensure there is a current question.
     if (!currentQuestions[currentIndex]) return;
-    
-    // Get the current question id.
-    const questionId = currentQuestions[currentIndex].id;
+    const question = currentQuestions[currentIndex];
 
-    // Verify the answer with the backend.
+    // Post the answer to the server and verify it.
     fetch('http://127.0.0.1:5000/api/quiz/verify', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id: questionId, category: categories[categoryIndex], selected: selectedAnswer })
+      body: JSON.stringify({ id: question.id, category: categories[categoryIndex], selected: selectedAnswer })
     })
     .then(response => response.json())
     .then(data => {
       // Show feedback based on the server's response.
-      if (data.correct) {
-        setFeedback(`Correct answer!`);
-      } else {
-        setFeedback("Wrong answer.");
-      }
+      setFeedback(data.correct ? 'Correct answer!' : 'Wrong answer.');
       // After a short delay (0.5s), clear feedback and move to the next question.
       setTimeout(() => {
         setFeedback(null);
-        setCurrentIndex(prevIndex => prevIndex + 1);
+
+        const nextQuestion = currentIndex + 1;
+        //If more questions in this category, just advance
+        if (nextQuestion < currentQuestions.length) {
+          setCurrentIndex(nextQuestion);
+        } else {
+          //Otherwise, move to next category
+          const nextCat = categoryIndex + 1;
+          if (nextCat < categories.length) {
+            setCategoryIndex(nextCat);
+            setCurrentQuestions(quizData[categories[nextCat]]);
+            setCurrentIndex(0);
+          } else {
+            //If no more categories, Quiz done.
+            setQuizCompleted(true);
+          }
+        }
       }, 500);
     })
     .catch(error => console.error('Error verifying answer:', error));
   };
 
+  /* 3) Render conditions */
   // While the questions are still loading.
-  if (currentQuestions.length === 0) return <div>Loading...</div>;
+  if (!quizData || categories.length === 0 || currentQuestions.length === 0) {
+    return <div>Loading…</div>;
+  }
 
   // Check if the quiz is completed.
-  if (currentIndex >= currentQuestions.length) return <div>Quiz Completed!</div>;
+  if (quizCompleted) {
+    return <div>🎉 Quiz Completed! 🎉</div>;
+  }
 
   // Get the current question.
   const currentQuestion = currentQuestions[currentIndex];
+  const currentCategory = categories[categoryIndex];
 
   return (
     <div>
+      <h3><em>Category : {currentCategory}</em></h3>
       <h2>{currentQuestion.question}</h2>
       <ul>
         {currentQuestion.choices.map((choice, index) => (
