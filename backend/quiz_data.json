@@ -915,5 +915,117 @@
       ],
       "answer": "innerHTML écrit du code HTML tandis que innerText n'écrit que du texte"
     }
+  ],
+  "JS2": [
+    {
+      "id": 1,
+      "question": "Comment définir une fonction qui retourne elle-même ?",
+      "choices": [
+        "function selfReturning() { return selfReturning; }",
+        "function() { return this; }",
+        "function recursive() { return recursive(); }",
+        "function inception() { return inception(); }"
+      ],
+      "answer": "function selfReturning() { return selfReturning; }"
+    },
+    {
+      "id": 2,
+      "question": "Quelle méthode de tableau renvoie un nouveau tableau trié ?",
+      "choices": [
+        "array.sort()",
+        "array.shuffle()",
+        "array.reverseSort()",
+        "array.magicSort()"
+      ],
+      "answer": "array.sort()"
+    },
+    {
+      "id": 3,
+      "question": "Que renvoie la méthode typeof pour un tableau ?",
+      "choices": [
+        "object",
+        "array",
+        "list",
+        "confusion"
+      ],
+      "answer": "object"
+    },
+    {
+      "id": 4,
+      "question": "Quelle syntaxe déstructure un objet pour extraire ses propriétés a et b ?",
+      "choices": [
+        "const {a, b} = obj;",
+        "const a, b = obj;",
+        "const a = obj.a, b = obj.b;",
+        "const awesome = \"JS is tricky;\""
+      ],
+      "answer": "const {a, b} = obj;"
+    },
+    {
+      "id": 5,
+      "question": "Comment vérifier si une valeur est NaN en JavaScript ?",
+      "choices": [
+        "isNaN(value)",
+        "value == NaN",
+        "typeof value === 'NaN'",
+        "notANumberButMaybeANinja"
+      ],
+      "answer": "isNaN(value)"
+    },
+    {
+      "id": 6,
+      "question": "Quelle méthode Promise permet d'attendre que toutes les promesses soient terminées ?",
+      "choices": [
+        "Promise.all",
+        "Promise.race",
+        "Promise.wait",
+        "Promise.weCanDoIt"
+      ],
+      "answer": "Promise.all"
+    },
+    {
+      "id": 7,
+      "question": "Comment accéder à tous les arguments d'une fonction dans ES6 ?",
+      "choices": [
+        "...args",
+        "arguments",
+        "Array.from(args)",
+        "whatsGoingOnHere"
+      ],
+      "answer": "...args"
+    },
+    {
+      "id": 8,
+      "question": "Quelle est la syntaxe correcte pour une fonction fléchée avec retour implicite ?",
+      "choices": [
+        "const f = () => value",
+        "const f = () => { return value }",
+        "const f = (value) => return",
+        "function likeAnArrow()"
+      ],
+      "answer": "const f = () => value"
+    },
+    {
+      "id": 9,
+      "question": "Comment changer obj.key1 en obj.key2 tout en conservant la valeur d'origine ?",
+      "choices": [
+        "obj.key2 = obj.key1; delete obj.key1;",
+        "obj.key2 = obj.key1;",
+        "Object.assign(obj, {key2: obj.key1});",
+        "AbraKadabra()"
+      ],
+      "answer": "obj.key2 = obj.key1; delete obj.key1;"
+    },
+    {
+      "id": 10,
+      "question": "Quelle est la sortie de 0.1 + 0.2 === 0.3 ?",
+      "choices": [
+        "false",
+        "true",
+        "undefined",
+        "It's complicated..."
+      ],
+      "answer": "false"
+    }
   ]
 }
