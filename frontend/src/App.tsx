@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+
 import { Settings } from "./types/settings";
 import { QuizData } from "./types/quizData";
-import './App.css';
 
 import Home from './Home';
 import QuizComponent from './components/QuizComponent';
+
+import './App.css';
 
 function App() {
   const [quizStarted, setQuizStarted] = useState(false);
