@@ -1,14 +1,17 @@
-# app.py
 import json
 from flask import Flask, jsonify, request, session
 from flask_cors import CORS
 
 app = Flask(__name__)
+app.config.update(
+  SESSION_COOKIE_SAMESITE='None',   # allow the cookie to be sent cross-site
+  SESSION_COOKIE_SECURE=True        # required when SameSite=None
+)
 # needed to use sessions
 app.secret_key = 'your‑very‑secret‑key'
 CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}}, supports_credentials=True)
 
-MAX_TIME = 20  # seconds per question
+MAX_TIME = 25  # seconds per question
 
 with open('quiz_data.json') as f:
     quiz_data = json.load(f)

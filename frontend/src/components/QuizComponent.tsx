@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import shuffleArray, { shuffleFirstThree} from '../functions/shuffleQuestions';
 
 // Define a type for a single quiz question.
@@ -14,7 +14,7 @@ interface QuizData {
   [category: string]: QuizQuestion[];
 }
 
-const MAX_TIME = 20;
+const MAX_TIME = 25;
 
 function QuizComponent() {
   // State to store the complete quiz data from the server.
@@ -41,9 +41,9 @@ function QuizComponent() {
   const [remainingTime, setRemainingTime] = useState(MAX_TIME);
   const timerRef = useRef<number>(MAX_TIME);
 
-  /* 1) Fetch and Initialize */
+
+  /* 1) Fetch quiz data and Initialize */
   useEffect(() => {
-    // Fetch the quiz data from your Flask API.
     fetch('http://127.0.0.1:5000/api/quiz', {
       credentials: 'include'  // send cookie so Flask can reset session
     })
@@ -144,7 +144,7 @@ function QuizComponent() {
       setTimeout(() => {
         setFeedback(null);
         advance();
-      }, 1);
+      }, 500);
     })
     .catch(error => {
       console.error('Error verifying answer:', error)
