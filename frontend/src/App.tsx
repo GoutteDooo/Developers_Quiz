@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Settings } from "./types/settings";
 import { QuizData } from "./types/quizData";
 import './App.css';
@@ -11,22 +11,37 @@ function App() {
   const [settings, setSettings] = useState<Settings | null>(null);
   const [quizData, setQuizData] = useState<QuizData | null>(null);
 
-  function launchQuiz() {
+  useEffect(() => {
+    fetch('http://127.0.0.1:5000/api/quiz', {
+      credentials: 'include'  // send cookie so Flask can reset session
+    })
+    .then(r => r.json())
+    .then((data: QuizData) => {
+      setQuizData(data);
+    })
+    .catch(error => console.error('Error fetching quiz data:', error));
+  }, []);
+
+  const handleStart = (s: Settings) => {
+    setSettings(s);
     setQuizStarted(true);
   }
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h2>Quiz App</h2>
-      </header>
-      <main>
-        {quizStarted ? (
-          <QuizComponent />
-        ) : (
-          <Home launchQuiz={launchQuiz} />
-        )}
-      </main>
+      {!quizStarted && quizData && (
+        <Home
+          categories={Object.keys(quizData)}
+          onStart={handleStart}
+          maxPerCategory={ quizData }  // so Home can cap the number inputs
+        />
+      )}
+      {quizStarted && quizData && settings && (
+        <QuizComponent
+          quizData={quizData}
+          settings={settings}
+        />
+      )}
     </div>
   );
 }
