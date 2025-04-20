@@ -1,18 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import shuffleArray, { shuffleFirstThree} from '../functions/shuffleQuestions';
-
-// Define a type for a single quiz question.
-interface QuizQuestion {
-  id: number;
-  question: string;
-  choices: string[];
-  // The correct answer is kept only on the backend for verification.
-}
-
-// Define a type for the entire quiz data organized by categories.
-interface QuizData {
-  [category: string]: QuizQuestion[];
-}
+import { QuizData, QuizQuestion } from '../types/quizData';
 
 const MAX_TIME = 25;
 

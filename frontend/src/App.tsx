@@ -1,10 +1,15 @@
 import { useState } from "react";
+import { Settings } from "./types/settings";
+import { QuizData } from "./types/quizData";
+import './App.css';
+
 import Home from './Home';
 import QuizComponent from './components/QuizComponent';
-import './App.css';
 
 function App() {
   const [quizStarted, setQuizStarted] = useState(false);
+  const [settings, setSettings] = useState<Settings | null>(null);
+  const [quizData, setQuizData] = useState<QuizData | null>(null);
 
   function launchQuiz() {
     setQuizStarted(true);
@@ -22,7 +27,6 @@ function App() {
           <Home launchQuiz={launchQuiz} />
         )}
       </main>
-
     </div>
   );
 }
