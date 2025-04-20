@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { shuffleFirstThree } from '../functions/shuffleQuestions';
 
 // Define a type for a single quiz question.
 interface QuizQuestion {
