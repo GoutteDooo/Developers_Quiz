@@ -31,6 +31,8 @@ function QuizComponent() {
   // State to know when the quiz is completed.
   const [quizCompleted, setQuizCompleted] = useState<boolean>(false);
 
+  // count number of questions left
+  const [questionsLeft, setQuestionsLeft] = useState(0);
   // score from server
   const [score, setScore] = useState(0);
 
@@ -55,6 +57,8 @@ function QuizComponent() {
       if (cats.length > 0) {
         setCurrentQuestions(data[cats[0]]);
       }
+      const totalQuestions = Object.values(data).reduce((acc, cat) => acc + cat.length, 0);
+      setQuestionsLeft(totalQuestions);
       // reset client‑side score to match server
       setScore(0);
     })
@@ -122,6 +126,7 @@ function QuizComponent() {
         'Correct!' 
         : 'Wrong!'
       );
+
       // After a short delay (0.5s), clear feedback and move to the next question.
       setTimeout(() => {
         setFeedback(null);
@@ -138,6 +143,7 @@ function QuizComponent() {
 
   const advance = () => {
     const nextQ = currentIndex + 1;
+    setQuestionsLeft(questionsLeft - 1);
     if (nextQ < currentQuestions.length) {
       setCurrentIndex(nextQ);
     } else {
@@ -182,7 +188,8 @@ function QuizComponent() {
     <div>
       <div>
         <strong>Category:</strong> {currentCategory} <br/>
-        <strong>Score:</strong> {score}
+        <strong>Score:</strong> {score} <br/>
+        <strong>Questions left:</strong> {questionsLeft}
       </div>
       <h2>{currentQuestion.question}</h2>
       <div>Time left: {remainingTime}s</div>
