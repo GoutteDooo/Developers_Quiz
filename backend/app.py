@@ -20,8 +20,16 @@ with open('quiz_data.json') as f:
 def get_quiz():
     # reset the score at quiz start
     session['score'] = 0
+
+    # send data without answers
+    quiz_data_copy = {}
+    for category, questions in quiz_data.items():
+        quiz_data_copy[category] = [
+            {**q, "answer": None} for q in questions
+        ]
+        
     # also reset any other per‑quiz state
-    return jsonify(quiz_data)
+    return jsonify(quiz_data_copy)
 
 @app.route('/api/quiz/verify', methods=['POST'])
 def verify_answer():
