@@ -35,29 +35,32 @@ function QuizComponent({ quizData, settings }: QuizProps) {
   const [remainingTime, setRemainingTime] = useState(MAX_TIME);
   const timerRef = useRef<number>(MAX_TIME);
 
-  //Build the quiz payload
   const filtered: QuizData = {};
-  selectedCategories.forEach(cat => {
-    const allQs = shuffleArray([...quizData[cat]]);
-    const count = questionsPerCategory[cat];
-    filtered[cat] = allQs.slice(0, count).map(q => ({
-      ...q,
-      choices: shuffleFirstThree(q.choices),
-    }))
-  });
 
-  const cats = Object.keys(filtered);
-  setCategories(cats);
-
-  //fill the currentQuestions state with the first question of the first category
-  // Here, it is : "CSS"
-  if (cats.length > 0) {
-    setCurrentQuestions(filtered[cats[0]]);
-  }
-  const totalQuestions = Object.values(filtered).reduce((acc, cat) => acc + cat.length, 0);
-  setQuestionsLeft(totalQuestions);
-  // reset client‑side score to match server
-  setScore(0);
+  useEffect(() => {
+    //Build the quiz payload
+    selectedCategories.forEach(cat => {
+      const allQs = shuffleArray([...quizData[cat]]);
+      const count = questionsPerCategory[cat];
+      filtered[cat] = allQs.slice(0, count).map(q => ({
+        ...q,
+        choices: shuffleFirstThree(q.choices),
+      }))
+    });
+    
+    const cats = Object.keys(filtered);
+    setCategories(cats);
+    
+    //fill the currentQuestions state with the first question of the first category
+    // Here, it is : "CSS"
+    if (cats.length > 0) {
+      setCurrentQuestions(filtered[cats[0]]);
+    }
+    const totalQuestions = Object.values(filtered).reduce((acc, cat) => acc + cat.length, 0);
+    setQuestionsLeft(totalQuestions);
+    // reset client‑side score to match server
+    setScore(0);
+  } , [questionsPerCategory, selectedCategories, quizData]);
 
 
   // Start/reset timer on each new question

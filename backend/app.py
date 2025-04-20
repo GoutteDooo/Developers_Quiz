@@ -11,7 +11,7 @@ app.config.update(
 app.secret_key = 'your‑very‑secret‑key'
 CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}}, supports_credentials=True)
 
-MAX_TIME = 25  # seconds per question
+MAX_TIME = 25  # seconds per question by default
 
 with open('quiz_data.json') as f:
     quiz_data = json.load(f)

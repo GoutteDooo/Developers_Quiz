@@ -34,8 +34,8 @@ function App() {
       {!quizStarted && quizData && (
         <Home
           categories={Object.keys(quizData)}
-          onStart={handleStart}
           maxPerCategory={ quizData }  // so Home can cap the number inputs
+          onStart={handleStart}
         />
       )}
       {quizStarted && quizData && settings && (
