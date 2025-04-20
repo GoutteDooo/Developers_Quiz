@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { shuffleFirstThree } from '../functions/shuffleQuestions';
+import shuffleArray, { shuffleFirstThree} from '../functions/shuffleQuestions';
 
 // Define a type for a single quiz question.
 interface QuizQuestion {
@@ -39,7 +39,7 @@ function QuizComponent() {
 
   //Timer state
   const [remainingTime, setRemainingTime] = useState(MAX_TIME);
-  const timerRef = useRef<number>();
+  const timerRef = useRef<number>(MAX_TIME);
 
   /* 1) Fetch and Initialize */
   useEffect(() => {
@@ -49,14 +49,26 @@ function QuizComponent() {
     })
     .then(r => r.json())
     .then((data: QuizData) => {
-      setQuizData(data);
-      const cats = Object.keys(data);
+      // shuffle the questions
+      const randomizedData: QuizData = {};
+      Object.entries(data).forEach(([category, questions]) => {
+        //shuffle the array of questions
+        const qsShuffled = shuffleArray([...questions]);
+        //Then, for each question, shuffle the third choices
+        randomizedData[category] = qsShuffled.map(q => ({
+          ...q,
+          choices: shuffleFirstThree(q.choices)
+        }));
+      });
+
+      setQuizData(randomizedData);
+      const cats = Object.keys(randomizedData);
       setCategories(cats);
 
       //fill the currentQuestions state with the first question of the first category
       // Here, it is : "CSS"
       if (cats.length > 0) {
-        setCurrentQuestions(data[cats[0]]);
+        setCurrentQuestions(randomizedData[cats[0]]);
       }
       const totalQuestions = Object.values(data).reduce((acc, cat) => acc + cat.length, 0);
       setQuestionsLeft(totalQuestions);
@@ -132,7 +144,7 @@ function QuizComponent() {
       setTimeout(() => {
         setFeedback(null);
         advance();
-      }, 500);
+      }, 1);
     })
     .catch(error => {
       console.error('Error verifying answer:', error)
