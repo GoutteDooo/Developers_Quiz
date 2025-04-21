@@ -52,15 +52,17 @@ function QuizComponent({ quizData, settings }: QuizProps) {
     setCategories(cats);
     
     //fill the currentQuestions state with the first question of the first category
-    // Here, it is : "CSS"
+    // i.g. : "CSS"
     if (cats.length > 0) {
+      console.log("currentQuestions set to:", filtered);
+      
       setCurrentQuestions(filtered[cats[0]]);
     }
     const totalQuestions = Object.values(filtered).reduce((acc, cat) => acc + cat.length, 0);
     setQuestionsLeft(totalQuestions);
     // reset client‑side score to match server
     setScore(0);
-  } , [questionsPerCategory, selectedCategories, quizData]);
+  } , []);
 
 
   // Start/reset timer on each new question
@@ -139,11 +141,14 @@ function QuizComponent({ quizData, settings }: QuizProps) {
 
 
   const advance = () => {
+    // increment current question index
     const nextQ = currentIndex + 1;
     setQuestionsLeft(questionsLeft - 1);
+    // if they are still some questions left in the current category, continue
     if (nextQ < currentQuestions.length) {
       setCurrentIndex(nextQ);
     } else {
+      // if we're at the end of the current category, move to the next one
       const nextCat = categoryIndex + 1;
       if (filtered && nextCat < categories.length) {
         setCategoryIndex(nextCat);
