@@ -35,35 +35,31 @@ function QuizComponent({ quizData, settings }: QuizProps) {
   const [remainingTime, setRemainingTime] = useState(MAX_TIME);
   const timerRef = useRef<number>(MAX_TIME);
 
-  const filtered: QuizData = {};
+  //quiz payload
+  const [filtered, setFiltered] = useState<QuizData>({});
 
   useEffect(() => {
-    //Build the quiz payload
+    const newFiltered: QuizData = {};
+    const newCategories: string[] = [];
+  
     selectedCategories.forEach(cat => {
       const allQs = shuffleArray([...quizData[cat]]);
       const count = questionsPerCategory[cat];
-      filtered[cat] = allQs.slice(0, count).map(q => ({
-        ...q,
-        choices: shuffleFirstThree(q.choices),
-      }))
+      newFiltered[cat] = allQs
+        .slice(0, count)
+        .map(q => ({ ...q, choices: shuffleFirstThree(q.choices) }));
+      newCategories.push(cat);
     });
-    
-    const cats = Object.keys(filtered);
-    setCategories(cats);
-    
-    //fill the currentQuestions state with the first question of the first category
-    // i.g. : "CSS"
-    if (cats.length > 0) {
-      console.log("currentQuestions set to:", filtered);
-      
-      setCurrentQuestions(filtered[cats[0]]);
-    }
-    const totalQuestions = Object.values(filtered).reduce((acc, cat) => acc + cat.length, 0);
+  
+    setFiltered(newFiltered);
+    setCategories(newCategories);
+    setCurrentQuestions(newFiltered[newCategories[0]]);
+    const totalQuestions = Object.values(newFiltered).reduce((acc, cat) => acc + cat.length, 0);
     setQuestionsLeft(totalQuestions);
-    // reset client‑side score to match server
+    
     setScore(0);
-  } , []);
-
+  }, [quizData, selectedCategories, questionsPerCategory]);
+  
 
   // Start/reset timer on each new question
   useEffect(() => {
@@ -139,7 +135,7 @@ function QuizComponent({ quizData, settings }: QuizProps) {
     });
   };
 
-
+  
   const advance = () => {
     // increment current question index
     const nextQ = currentIndex + 1;
@@ -166,6 +162,7 @@ function QuizComponent({ quizData, settings }: QuizProps) {
     const elapsed = MAX_TIME - remainingTime;
     submitAnswer(selected, elapsed);
   };
+
 
   /* 3) Render conditions */
   // While the questions are still loading.
