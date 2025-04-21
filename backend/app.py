@@ -16,6 +16,14 @@ DEFAULT_MAX_TIME = 25  # seconds per question by default
 with open('quiz_data.json') as f:
     quiz_data = json.load(f)
 
+@app.route('/api/quiz/')
+def get_settings():
+    #get an object with name of categories and number of questions per category
+    data_settings = {}
+    for category, questions in quiz_data.items():
+        data_settings[category] = len(questions)
+    return jsonify(data_settings)
+
 @app.route('/api/quiz/start', methods=['POST'])
 def get_quiz():
     """
@@ -54,7 +62,7 @@ def verify_answer():
     timer_enabled = max_time is not None
 
     # initialize score in session if not there
-    session.setDefault('score', 0)
+    session.setdefault('score', 0)
 
     # timeout: if timer enabled and time_elapsed > limit, or user didn't pick an answer
     if timer_enabled and time_elapsed > max_time or selected is None and timer_enabled:

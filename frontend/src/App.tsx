@@ -12,7 +12,16 @@ function App() {
   const [quizStarted, setQuizStarted] = useState(false);
   const [settings, setSettings] = useState<Settings | null>(null);
   const [quizData, setQuizData] = useState<QuizData | null>(null);
-  
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:5000/api/quiz/")
+      .then(r => r.json())
+      .then((data: QuizData) => {
+        setQuizData(data);
+      })
+      .catch(console.error);
+  }, [])
+
   const handleStart = (s: Settings) => {
     fetch("http://127.0.0.1:5000/api/quiz/start", {
       method: "POST",
@@ -36,7 +45,7 @@ function App() {
       {!quizStarted && quizData && (
         <Home
           categories={Object.keys(quizData)}
-          maxPerCategory={ quizData }  // so Home can cap the number inputs
+          maxPerCategory={quizData}  // so Home can cap the number inputs
           onStart={handleStart}
         />
       )}

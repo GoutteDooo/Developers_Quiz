@@ -1,27 +1,35 @@
 import { useState } from "react";
-import { QuizQuestion } from "./types/quizData";
 import { Settings } from "./types/settings";
 
 interface HomeProps {
   categories: string[];
-  maxPerCategory: { [category: string]: QuizQuestion[] };
+  maxPerCategory: Record<string, number>;
   onStart: (s: Settings) => void;
 }
 
 function Home({ categories, maxPerCategory, onStart }: HomeProps) {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [questionsPerCategory, setQuestionsPerCategory] = useState<Record<string, number>>({});
+  const [questionsPerCategory, setQuestionsPerCategory] = useState<Record<string,number>>({});
   const [timePerQuestion, setTimePerQuestion] = useState<number | null>(null);
   const [timerEnabled, setTimerEnabled] = useState(true);
 
-  const toggleCategory = (category: string) => {
-    setSelectedCategories(curr =>
-      curr.includes(category) ? curr.filter(c => c !== category) : [...curr, category]
+  const toggleCategory = (cat: string) => {
+    setSelectedCategories(s => 
+      s.includes(cat) ? s.filter(x=>x!==cat) : [...s,cat]
     );
+    // Optionally clear out old counts:
+    setQuestionsPerCategory(q => {
+      const copy = { ...q };
+      delete copy[cat];
+      return copy;
+    });
   };
 
-  const updateCount = (category: string, count: number) => {
-    setQuestionsPerCategory(q => ({...q, [category]: count}));
+  const updateCount = (cat: string, count: number) => {
+    setQuestionsPerCategory(q => ({
+      ...q,
+      [cat]: count
+    }));
   };
 
   const handleSubmit = () => {
@@ -30,7 +38,7 @@ function Home({ categories, maxPerCategory, onStart }: HomeProps) {
       questionsPerCategory: selectedCategories.reduce((acc, cat) => {
         //default to either user's number or available
         acc[cat] = Math.min(
-          questionsPerCategory[cat] ?? maxPerCategory[cat].length, maxPerCategory[cat].length 
+          questionsPerCategory[cat] ?? maxPerCategory[cat], maxPerCategory[cat] 
         );
         return acc;
       }, {} as Record<string, number>),
@@ -44,7 +52,7 @@ function Home({ categories, maxPerCategory, onStart }: HomeProps) {
       <h2>Quiz Settings</h2>
       <fieldset>
         <legend>Select themes & # questions</legend>
-        {categories.map(cat => (
+        {categories.map((cat) => (
           <div key={cat}>
             <label>
               <input
@@ -58,8 +66,8 @@ function Home({ categories, maxPerCategory, onStart }: HomeProps) {
               <input
                 type="number"
                 min={1}
-                max={maxPerCategory[cat].length}
-                value={questionsPerCategory[cat] ?? maxPerCategory[cat].length}
+                max={maxPerCategory[cat]}
+                value={questionsPerCategory[cat] ?? maxPerCategory[cat]}
                 onChange={e => updateCount(cat, +e.target.value)}
               />
             )}
