@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Settings } from "../types/settings";
 import { QuizSettingsData } from "../types/quizData";
 
@@ -14,20 +14,12 @@ const DEFAULT_CATEGORIES = [
   "JS",
 ]
 
-function Home({categories, maxPerCategory, onStart }: TrainingSettingsProps) {
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+function TrainingSettings({categories, maxPerCategory, onStart }: TrainingSettingsProps) {
+  const initialSelected = DEFAULT_CATEGORIES.filter(cat => categories.includes(cat));
+  const [selectedCategories, setSelectedCategories] = useState<string[]>(initialSelected);
   const [questionsPerCategory, setQuestionsPerCategory] = useState<QuizSettingsData>({});
   const [timePerQuestion, setTimePerQuestion] = useState<number | null>(25);
   const [timerEnabled, setTimerEnabled] = useState(true);
-
-  // Set default categories
-  useEffect(() => {
-    categories.forEach(cat => {
-      if (DEFAULT_CATEGORIES.includes(cat) && !selectedCategories.includes(cat)) {
-        setSelectedCategories(s => [...s, cat]);
-      }
-    })
-  }, [categories])
 
   const toggleCategory = (cat: string) => {
     setSelectedCategories(s => 
@@ -60,6 +52,8 @@ function Home({categories, maxPerCategory, onStart }: TrainingSettingsProps) {
       }, {} as QuizSettingsData),
       timePerQuestion: timerEnabled ? timePerQuestion : null,
     };
+    console.log("settings", s);
+    
     onStart(s);
   }
 
@@ -127,4 +121,4 @@ function Home({categories, maxPerCategory, onStart }: TrainingSettingsProps) {
   );
 }
 
-export default Home;
+export default TrainingSettings;
