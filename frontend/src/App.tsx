@@ -12,21 +12,23 @@ function App() {
   const [quizStarted, setQuizStarted] = useState(false);
   const [settings, setSettings] = useState<Settings | null>(null);
   const [quizData, setQuizData] = useState<QuizData | null>(null);
-
-  useEffect(() => {
-    fetch('http://127.0.0.1:5000/api/quiz', {
-      credentials: 'include'  // send cookie so Flask can reset session
+  
+  const handleStart = (s: Settings) => {
+    fetch("http://127.0.0.1:5000/api/quiz/start", {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        timerPerQuestion: s.timePerQuestion,
+      }),
     })
     .then(r => r.json())
     .then((data: QuizData) => {
       setQuizData(data);
+      setSettings(s);
+      setQuizStarted(true);
     })
-    .catch(error => console.error('Error fetching quiz data:', error));
-  }, []);
-
-  const handleStart = (s: Settings) => {
-    setSettings(s);
-    setQuizStarted(true);
+    .catch(console.error);
   }
 
   return (
