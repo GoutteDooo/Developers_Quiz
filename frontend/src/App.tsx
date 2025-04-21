@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Settings } from "./types/settings";
 import { QuizData, QuizSettingsData } from "./types/quizData";
 
-import Home from './Home';
+import Home from './components/TrainingSettings';
 import QuizComponent from './components/QuizComponent';
 
 import './App.css';

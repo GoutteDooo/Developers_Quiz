@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Settings } from "./types/settings";
-import { QuizSettingsData } from "./types/quizData";
+import { Settings } from "../types/settings";
+import { QuizSettingsData } from "../types/quizData";
 
 interface HomeProps {
   categories: string[];

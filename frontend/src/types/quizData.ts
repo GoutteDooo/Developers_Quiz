@@ -13,5 +13,5 @@ export interface QuizData {
 }
 
 export interface QuizSettingsData {
-  [category: string]: number;
+  [category: string]: number; // e.g. : ["HTML": 3, "CSS": 2]
 }
