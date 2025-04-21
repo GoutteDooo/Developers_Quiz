@@ -11,3 +11,7 @@ export interface QuizQuestion {
 export interface QuizData {
   [category: string]: QuizQuestion[];
 }
+
+export interface QuizSettingsData {
+  [category: string]: number;
+}

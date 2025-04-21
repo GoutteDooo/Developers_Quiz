@@ -135,7 +135,7 @@ function QuizComponent({ quizData, settings }: QuizProps) {
     });
   };
 
-  
+
   const advance = () => {
     // increment current question index
     const nextQ = currentIndex + 1;
@@ -191,7 +191,7 @@ function QuizComponent({ quizData, settings }: QuizProps) {
         <strong>Questions left:</strong> {questionsLeft}
       </div>
       <h2>{currentQuestion.question}</h2>
-      <div>Time left: {remainingTime}s</div>
+      {remainingTime != Infinity && <div>Time left : {remainingTime}s</div>}
       <ul>
         {currentQuestion.choices.map((c, i) => (
           <li key={i}>

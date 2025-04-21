@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { Settings } from "./types/settings";
+import { QuizSettingsData } from "./types/quizData";
 
 interface HomeProps {
   categories: string[];
-  maxPerCategory: Record<string, number>;
+  maxPerCategory: QuizSettingsData;
   onStart: (s: Settings) => void;
 }
 
 function Home({ categories, maxPerCategory, onStart }: HomeProps) {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [questionsPerCategory, setQuestionsPerCategory] = useState<Record<string,number>>({});
+  const [questionsPerCategory, setQuestionsPerCategory] = useState<QuizSettingsData>({});
   const [timePerQuestion, setTimePerQuestion] = useState<number | null>(25);
   const [timerEnabled, setTimerEnabled] = useState(true);
 
@@ -41,7 +42,7 @@ function Home({ categories, maxPerCategory, onStart }: HomeProps) {
           questionsPerCategory[cat] ?? maxPerCategory[cat], maxPerCategory[cat] 
         );
         return acc;
-      }, {} as Record<string, number>),
+      }, {} as QuizSettingsData),
       timePerQuestion: timerEnabled ? timePerQuestion : null,
     };
     onStart(s);

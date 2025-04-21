@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { Settings } from "./types/settings";
-import { QuizData } from "./types/quizData";
+import { QuizData, QuizSettingsData } from "./types/quizData";
 
 import Home from './Home';
 import QuizComponent from './components/QuizComponent';
@@ -12,12 +12,12 @@ function App() {
   const [quizStarted, setQuizStarted] = useState(false);
   const [settings, setSettings] = useState<Settings | null>(null);
   const [quizData, setQuizData] = useState<QuizData | null>(null);
-  const [quizSettingsData, setQuizSettingsData] = useState<Record<string, number>>({});
+  const [quizSettingsData, setQuizSettingsData] = useState<QuizSettingsData>({});
 
   useEffect(() => {
     fetch("http://127.0.0.1:5000/api/quiz/")
       .then(r => r.json())
-      .then((data: Record<string, number>) => {
+      .then((data: QuizSettingsData) => {
         setQuizSettingsData(data);
       })
       .catch(console.error);
