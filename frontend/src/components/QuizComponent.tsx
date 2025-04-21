@@ -4,6 +4,7 @@ import shuffleArray, { shuffleFirstThree} from '../functions/shuffleQuestions';
 //types
 import { QuizData, QuizQuestion } from '../types/quizData';
 import { Settings } from '../types/settings';
+import QuizCompleted from './QuizCompleted';
 
 interface QuizProps {
   quizData: QuizData;
@@ -28,6 +29,7 @@ function QuizComponent({ quizData, settings }: QuizProps) {
 
   // count number of questions left
   const [questionsLeft, setQuestionsLeft] = useState(0);
+  const [totalQuestions, setTotalQuestions] = useState(0);
   // score from server
   const [score, setScore] = useState(0);
 
@@ -54,8 +56,9 @@ function QuizComponent({ quizData, settings }: QuizProps) {
     setFiltered(newFiltered);
     setCategories(newCategories);
     setCurrentQuestions(newFiltered[newCategories[0]]);
-    const totalQuestions = Object.values(newFiltered).reduce((acc, cat) => acc + cat.length, 0);
-    setQuestionsLeft(totalQuestions);
+    const total = Object.values(newFiltered).reduce((acc, cat) => acc + cat.length, 0);
+    setTotalQuestions(total);
+    setQuestionsLeft(total);
     
     setScore(0);
   }, [quizData, selectedCategories, questionsPerCategory]);
@@ -169,15 +172,10 @@ function QuizComponent({ quizData, settings }: QuizProps) {
   if (!filtered || !categories.length|| !currentQuestions.length) {
     return <div>Loading…</div>;
   }
-
+  console.log(settings);
+  
   // Check if the quiz is completed.
-  if (quizCompleted) return (
-    <div>
-      🎉 Quiz Completed! 🎉
-      <br/>
-      Your final score: {score}
-    </div>
-  );
+  if (quizCompleted) return (<QuizCompleted score={score} totalQuestions={totalQuestions} />);
 
   // Get the current question.
   const currentQuestion = currentQuestions[currentIndex];
