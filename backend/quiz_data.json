@@ -2,23 +2,23 @@
   "HTML": [
     {
       "id": 1,
-      "question": "En HTML, quelle est la balise utilisée pour écrire le titre principal ?",
+      "question": "Quelle est la balise utilisée pour écrire un titre principal ?",
       "choices": [
         "<h1></h1>",
         "<title></title>",
         "<p></p>",
-        "<input type=\"title\" />"
+        "<GRAND_TITRE>"
       ],
       "answer": "<h1></h1>"
     },
     {
       "id": 2,
-      "question": "En HTML, quelle est la balise utilisée pour faire une liste non ordonnée ?",
+      "question": "Quelle est la balise utilisée pour faire une liste non ordonnée ?",
       "choices": [
         "<ul></ul>",
         "<list></list>",
         "<order></order>",
-        "<input type=\"list\" />"
+        "=_/\\_"
       ],
       "answer": "<ul></ul>"
     },
@@ -27,9 +27,9 @@
       "question": "Trouver l'intrus dans cette liste",
       "choices": [
         "<img></img>",
-        "<ol></ol>",
-        "<h5></h5>",
-        "<th></th>"
+        "<script></script>",
+        "<a></a>",
+        "<:)></:(>"
       ],
       "answer": "<img></img>"
     },
@@ -38,9 +38,9 @@
       "question": "Quelle balise est utilisée pour les images ?",
       "choices": [
         "<img />",
-        "<picture />",
-        "<pic />",
-        "<link img />"
+        "<image />",
+        "<link img=\"chemin_de_limage\" />",
+        "_/[(é_è)]\\_"
       ],
       "answer": "<img />"
     },
@@ -57,7 +57,7 @@
     },
     {
       "id": 6,
-      "question": "Que signifie HTML ? ",
+      "question": "Que signifie HTML ?",
       "choices": [
         "HyperText Markup Language",
         "Hyperlink Text Management Language",
@@ -68,7 +68,7 @@
     },
     {
       "id": 7,
-      "question": "Quelle est la balise HTML correcte pour insérer un passage à la ligne ?",
+      "question": "Quelle est la balise correcte pour insérer un passage à la ligne ?",
       "choices": [
         "<br />",
         "<nbsp />",
@@ -84,24 +84,24 @@
         "<th>",
         "<td>",
         "<theader>",
-        "<tete-du-tableau>"
+        "<tableau----entete>"
       ],
       "answer": "<th>"
     },
     {
       "id": 9,
-      "question": "Quelle balise HTML est utilisée pour créer une liste de définitions ?",
+      "question": "Quelle balise est utilisée pour créer une liste de définitions ?",
       "choices": [
         "<dl>",
         "<dlist>",
         "<del>",
-        "<définissez_vous>"
+        "<définissez_vous_chers_amis>"
       ],
       "answer": "<dl>"
     },
     {
       "id": 10,
-      "question": "Quelle balise HTML est utilisée pour créer un formulaire ?",
+      "question": "Quelle balise est utilisée pour créer un formulaire ?",
       "choices": [
         "<form>",
         "<fieldset>",
@@ -134,7 +134,7 @@
     },
     {
       "id": 13,
-      "question": "Quelle balise HTML est utilisée pour définir une citation longue ?",
+      "question": "Quelle balise est utilisée pour définir une citation longue ?",
       "choices": [
         "<blockquote>",
         "<quote>",
@@ -156,18 +156,13 @@
     },
     {
       "id": 15,
-      "question": "Quelle est la structure correcte d'une table HTML ?",
-      "choices": [
-        "<table><tr><td></td></tr></table>",
-        "<table><td><tr></tr></td></table>",
-        "<table><tr><tc><td></td></tc></tr></table>",
-        "<table><diner_presque_parfait /></table>"
-      ],
-      "answer": "<table><tr><td></td></tr></table>"
+      "question": "Quel élément utilise-t-on pour insérer un lien hypertexte ?",
+      "choices": ["<link>", "<a>", "<href>", "le fameux <clic> magique"],
+      "answer": "<a>"
     },
     {
       "id": 16,
-      "question": "Comment définir un bouton en HTML ?",
+      "question": "Quelle balise est utilisée pour définir un bouton ?",
       "choices": [
         "<button>",
         "<input type=\"button\">",
@@ -191,16 +186,16 @@
       "id": 18,
       "question": "À quoi sert la balise <title> ?",
       "choices": [
-        "À ajouter le nom de la page dans l'onglet du navigateur",
+        "À ajouter le nom de la page dans le document",
         "À ajouter un titre à l'article",
         "À insérer un titre à une image",
         "À afficher des blagues toto"
       ],
-      "answer": "À ajouter le nom de la page dans l'onglet du navigateur"
+      "answer": "À ajouter le nom de la page dans le document"
     },
     {
       "id": 19,
-      "question": "Quelle balise HTML définit une liste non ordonnée ?",
+      "question": "Quelle balise définit une liste non ordonnée ?",
       "choices": [
         "<ul>",
         "<li>",
@@ -214,20 +209,20 @@
       "question": "Quel attribut permet d’ajouter un texte alternatif à une image ?",
       "choices": [
         "alt",
-        "title",
-        "description",
-        "<alternatif-texte-image>"
+        "alternative",
+        "alter",
+        "<ctrl-alt-suppr-oh-non>"
       ],
       "answer": "alt"
     },
     {
       "id": 21,
-      "question": "Quelle balise HTML représente du texte important en gras ?",
+      "question": "Quelle balise représente du texte important en gras ?",
       "choices": [
         "<strong>",
         "<bold>",
         "<em>",
-        "<heavystuff>"
+        "<GROS_TEXTE>"
       ],
       "answer": "<strong>"
     },
@@ -252,6 +247,72 @@
         "J'm'en fou. J'ai un raccourci VS Code."
       ],
       "answer": "<!-- Commentaire -->"
+    },
+    {
+      "id": 24,
+      "question": "Comment déclare-t-on le document comme étant en HTML5 ?",
+      "choices": ["<!DOCTYPE html5>", "<!DOCTYPE HTML>", "<!DOCTYPE html>", "<!DOCTYPE pizza>"],
+      "answer": "<!DOCTYPE html>"
+    },
+    {
+      "id": 25,
+      "question": "Quelle balise utilise-t-on pour créer un paragraphe ?",
+      "choices": ["<p>", "<paragraph>", "<para>", "<blabla>"],
+      "answer": "<p>"
+    },
+    {
+      "id": 26,
+      "question": "Quelle balise HTML5 permet d’intégrer une vidéo ?",
+      "choices": ["<media>", "<movie>", "<video>", "<cinéma>"],
+      "answer": "<video>"
+    },
+    {
+      "id": 27,
+      "question": "La balise <meta charset=\"UTF-8\"> sert à :",
+      "choices": ["définir le jeu de caractères", "ajouter un style CSS", "charger un script", "Faire un clin d'oeil au PC"],
+      "answer": "définir le jeu de caractères"
+    },
+    {
+      "id": 28,
+      "question": "Quel attribut de la balise <form> spécifie la méthode d’envoi des données ?",
+      "choices": ["action", "method", "type", "façon-de-faire"],
+      "answer": "method"
+    },
+    {
+      "id": 29,
+      "question": "Quel élément HTML5 structure le contenu principal d’une page ?",
+      "choices": ["<section>", "<main>", "<page>", "<conteneur-principal>"],
+      "answer": "<main>"
+    },
+    {
+      "id": 30,
+      "question": "Quelle balise HTML5 est utilisée pour définir le pied de page d’un document ou d’une section ?",
+      "choices": ["<footer>", "<bottom>", "<side>", "<tout-en-bas>"],
+      "answer": "<footer>"
+    },
+    {
+      "id": 31,
+      "question": "La balise <table> doit contenir au minimum :",
+      "choices": ["<tr> et <td>", "<ul> et <li>", "<tbody> uniquement", "<assiettes> et <fourchettes>"],
+      "answer": "<tr> et <td>"
+    },
+    {
+      "id": 32,
+      "question": "Quelle balise HTML permet d’intégrer un script JavaScript ?",
+      "choices": ["<js>", "<script>", "<code>", "<sorcellerie>"],
+      "answer": "<script>"
+    },
+    {
+      "id": 33,
+      "question": "La balise <nav> sert à :",
+      "choices": ["définir les liens de navigation", "ajouter un style", "insérer une image", "naviguer dans l’espace-temps"],
+      "answer": "définir les liens de navigation"
+    },
+    {
+      "id": 34,
+      "question": "Quel attribut de <input type=\"text\"> affiche un texte indicatif dans le champ ?",
+      "choices": ["title", "value", "placeholder", "indice-pour-Pikachu"],
+      "answer": "placeholder"
     }
   ],
   "HTML2": [
@@ -1852,6 +1913,114 @@
         "Xx_?!|[liste2010]|!?_xX"
       ],
       "answer": "- élément"
+    },
+    {
+      "id": 13,
+      "question": "Comment créer un titre de niveau 2 en Markdown ?",
+      "choices": ["## Titre", "== Titre", "##Titre", "## Le_SuperTitre"],
+      "answer": "## Titre"
+    },
+    {
+      "id": 14,
+      "question": "Quelle syntaxe utilise-t-on pour créer un titre de niveau 1 via la mise en forme underline ?",
+      "choices": ["Titre\\n====", "====\\nTitre", "Titre====", "Ligne magique"],
+      "answer": "Titre\\n===="
+    },
+    {
+      "id": 15,
+      "question": "Comment délimiter un bloc de code multi-lignes avec des backticks ?",
+      "choices": ["```\\ncode\\n```", "`code`", "~~~\\ncode\\n~~~", "`` SuperCode ``"],
+      "answer": "```\\ncode\\n```"
+    },
+    {
+      "id": 16,
+      "question": "Comment créer un bloc de code en indentant chaque ligne avec quatre espaces ?",
+      "choices": ["    code", "\\tcode", "> code", "☕ code"],
+      "answer": "    code"
+    },
+    {
+      "id": 17,
+      "question": "Comment barrer du texte en Markdown ?",
+      "choices": ["~~texte~~", "--texte--", "==texte==", "💥texte💥"],
+      "answer": "~~texte~~"
+    },
+    {
+      "id": 18,
+      "question": "Quelle syntaxe de base permet de créer un tableau en Markdown ?",
+      "choices": ["| Col1 | Col2 |\\n| --- | --- |", "[Col1][Col2]", "|| Col1 || Col2 ||", "# Tableau Magique"],
+      "answer": "| Col1 | Col2 |\\n| --- | --- |"
+    },
+    {
+      "id": 19,
+      "question": "Comment créer une liste de tâches non achevées ?",
+      "choices": ["- [ ] Tâche", "* [ ] Tâche", "- [x] Tâche", "- [] Tâche"],
+      "answer": "- [ ] Tâche"
+    },
+    {
+      "id": 20,
+      "question": "Comment marquer une tâche comme achevée ?",
+      "choices": ["- [x] Tâche", "- [*] Tâche", "- [-] Tâche", "- [Pistache]"],
+      "answer": "- [x] Tâche"
+    },
+    {
+      "id": 21,
+      "question": "Quelle syntaxe permet d’insérer un lien en style référence ?",
+      "choices": ["[Texte][id]", "[Texte](id)", "[id]: Texte", "[lien magique]"],
+      "answer": "[Texte][id]"
+    },
+    {
+      "id": 22,
+      "question": "Comment définir une référence de lien en bas du document ?",
+      "choices": ["[id]: http://exemple.com", "[id] = http://exemple.com", "id: http://exemple.com", "{id}: URL"],
+      "answer": "[id]: http://exemple.com"
+    },
+    {
+      "id": 23,
+      "question": "Comment créer un appel de note de bas de page ?",
+      "choices": ["[^1]", "[ footnote ]", "(1)", "<1>"],
+      "answer": "[^1]"
+    },
+    {
+      "id": 24,
+      "question": "Comment définir le texte de la note de bas de page ?",
+      "choices": ["[^1]: Ici le texte", "(1): Ici le texte", "[1]: Ici le texte", "*1*: Texte secret"],
+      "answer": "[^1]: Ici le texte"
+    },
+    {
+      "id": 25,
+      "question": "Comment écrire un lien automatique (autolink) ?",
+      "choices": ["<http://exemple.com>", "[http://exemple.com]", "(http://exemple.com)", "http://exemple.com"],
+      "answer": "<http://exemple.com>"
+    },
+    {
+      "id": 26,
+      "question": "Quel caractère permet d’échapper un caractère spécial (par exemple un astérisque) ?",
+      "choices": ["\\\\", "/", "*", "!"],
+      "answer": "\\\\"
+    },
+    {
+      "id": 27,
+      "question": "Quelle syntaxe permet d’insérer une image en style référence ?",
+      "choices": ["![alt][id]", "![alt](id)", "[alt][id]", "<img src>"],
+      "answer": "![alt][id]"
+    },
+    {
+      "id": 28,
+      "question": "Comment ajouter un titre (tooltip) à un lien ?",
+      "choices": ["[Texte](URL \"Titre\")", "[Texte](URL Titre)", "[Texte]:(URL \"Titre\")", "[magic]"],
+      "answer": "[Texte](URL \"Titre\")"
+    },
+    {
+      "id": 29,
+      "question": "Comment créer un lien vers une ancre interne (titre) de la même page ?",
+      "choices": ["[Aller](#section)", "[Aller](section)", "[Aller]#section", "<#section>"],
+      "answer": "[Aller](#section)"
+    },
+    {
+      "id": 30,
+      "question": "Comment formater un bloc de citation sur plusieurs lignes ?",
+      "choices": ["> Première ligne\\n> Deuxième ligne", ">> Citation magique", "<quote>", "| Citation"],
+      "answer": "> Première ligne\\n> Deuxième ligne"
     }
   ],
   "GIT": [
@@ -2063,6 +2232,188 @@
         "Je supprime la branche et j'en crée une autre."
       ],
       "answer": "git branch -m old-name new-name"
+    },
+    {
+      "id": 20,
+      "question": "Comment crée-t-on une nouvelle branche nommée \"feature\" ?",
+      "choices": ["git branch feature", "git new-branch feature", "git create feature", "git surgeler feature"],
+      "answer": "git branch feature"
+    },
+    {
+      "id": 21,
+      "question": "Quelle commande permet de passer sur la branche \"feature\" ?",
+      "choices": ["git checkout feature", "git switch feature", "git move feature", "git télékinésie feature"],
+      "answer": "git checkout feature"
+    },
+    {
+      "id": 22,
+      "question": "Comment met-on de côté les modifications en cours sans les committer ?",
+      "choices": ["git stash", "git shelf", "git hold", "git cachette"],
+      "answer": "git stash"
+    },
+    {
+      "id": 23,
+      "question": "Quelle commande réapplique les modifications mises de côté avec stash ?",
+      "choices": ["git stash pop", "git stash apply", "git stash bring-back", "git résurrection"],
+      "answer": "git stash pop"
+    },
+    {
+      "id": 24,
+      "question": "Comment compare-t-on les modifications non encore indexées ?",
+      "choices": ["git diff", "git compare", "git changes", "git paparazzi"],
+      "answer": "git diff"
+    },
+    {
+      "id": 25,
+      "question": "Quelle commande affiche la liste des dépôts distants configurés ?",
+      "choices": ["git remote -v", "git remotes list", "git show-remote", "git télécabine"],
+      "answer": "git remote -v"
+    },
+    {
+      "id": 26,
+      "question": "Comment réinitialiser la branche courante à l’état d’un commit précis, en perdant les changements ?",
+      "choices": ["git reset --hard <commit>", "git rewind <commit>", "git rollback <commit>", "git crash <commit>"],
+      "answer": "git reset --hard <commit>"
+    },
+    {
+      "id": 27,
+      "question": "Quelle commande configure le nom d’utilisateur global pour Git ?",
+      "choices": ["git config --global user.name \"Votre Nom\"", "git set user.name \"Votre Nom\"", "git user set-name \"Votre Nom\"", "git baptême \"Votre Nom\""],
+      "answer": "git config --global user.name \"Votre Nom\""
+    },
+    {
+      "id": 28,
+      "question": "Comment modifier le message du dernier commit sans créer de nouveau commit ?",
+      "choices": ["git commit --amend", "git fix-last", "git edit-commit", "git corrige-sandwich"],
+      "answer": "git commit --amend"
+    }
+  ],
+  "GIT2":[
+    {
+      "id": 1,
+      "question": "Comment crée-t-on une étiquette (tag) annotée nommée v1.0 ?",
+      "choices": ["git tag -a v1.0 -m \"version 1.0\"", "git mark v1.0", "git label v1.0", "git tampon v1.0"],
+      "answer": "git tag -a v1.0 -m \"version 1.0\""
+    },
+    {
+      "id": 2,
+      "question": "Quelle commande annule un commit déjà poussé en créant un commit d’inversion ?",
+      "choices": ["git revert <commit>", "git undo <commit>", "git flip <commit>", "git oups <commit>"],
+      "answer": "git revert <commit>"
+    },
+    {
+      "id": 3,
+      "question": "Quelle commande applique un commit spécifique sur la branche courante sans fusionner toute la branche source ?",
+      "choices": ["git cherry-pick <commit>", "git pick-cherry <commit>", "git cherry-get <commit>", "git coca-cherry <commit>"],
+      "answer": "git cherry-pick <commit>"
+    },
+    {
+      "id": 4,
+      "question": "Quelle fonctionnalité interactive permet de trouver le commit fautif en testant une séquence binaire ?",
+      "choices": ["git bisect", "git divide", "git hunt", "git détective privé"],
+      "answer": "git bisect"
+    },
+    {
+      "id": 5,
+      "question": "Comment afficher l’historique local des actions Git (reflog) ?",
+      "choices": ["git reflog", "git log --reflog", "git history --reflog", "git personal --diary"],
+      "answer": "git reflog"
+    },
+    {
+      "id": 6,
+      "question": "Quelle commande montre le contenu d’un objet Git (commit, tree, blob) ?",
+      "choices": ["git show <objet>", "git cat-file -p <objet>", "git peek <objet>", "git espionner <objet>"],
+      "answer": "git cat-file -p <objet>"
+    },
+    {
+      "id": 7,
+      "question": "Quelle commande affiche pour chaque ligne de code qui l’a modifiée en dernier ?",
+      "choices": ["git blame <fichier>", "git annotate <fichier>", "git who-did-it <fichier>", "git accusateur <fichier>"],
+      "answer": "git blame <fichier>"
+    },
+    {
+      "id": 8,
+      "question": "Quelle commande résume les commits par contributeur ?",
+      "choices": ["git shortlog", "git summary", "git stats", "git mini-dossier"],
+      "answer": "git shortlog"
+    },
+    {
+      "id": 9,
+      "question": "Comment créer une archive tarball du dépôt à un état donné ?",
+      "choices": ["git archive --format=tar <branch>", "git pack --tar <branch>", "git bundle <branch>", "git sushi <branch>"],
+      "answer": "git archive --format=tar <branch>"
+    },
+    {
+      "id": 10,
+      "question": "Quelle commande ajoute un sous-module distant dans votre projet ?",
+      "choices": ["git submodule add <url> <path>", "git module add <url> <path>", "git add-sub <url> <path>", "git mini-projet <url> <path>"],
+      "answer": "git submodule add <url> <path>"
+    },
+    {
+      "id": 11,
+      "question": "Quelle commande crée un nouveau répertoire de travail lié au même dépôt ?",
+      "choices": ["git worktree add <path> <branch>", "git clone --worktree <path>", "git new-work <path>", "git atelier <path>"],
+      "answer": "git worktree add <path> <branch>"
+    },
+    {
+      "id": 12,
+      "question": "Comment nettoyer et optimiser la base d’objets Git locale ?",
+      "choices": ["git gc", "git clean --all", "git prune", "git aspirateur"],
+      "answer": "git gc"
+    },
+    {
+      "id": 13,
+      "question": "Quel réglage Git convertit automatiquement les fins de ligne CRLF en LF ?",
+      "choices": ["git config core.autocrlf true", "git config core.crlf lf", "git config autocrlf on", "git config ligne-de-fini magique"],
+      "answer": "git config core.autocrlf true"
+    },
+    {
+      "id": 14,
+      "question": "Quelle commande donne une description lisible du commit courant basée sur les tags ?",
+      "choices": ["git describe --tags", "git tag-desc", "git name-hash", "git raconte-moi une histoire"],
+      "answer": "git describe --tags"
+    },
+    {
+      "id": 15,
+      "question": "Quelle fonctionnalité réapplique automatiquement des résolutions de conflits déjà gérées ?",
+      "choices": ["git rerere", "git re-resolve", "git conflict-manager", "git paix-des-cœurs"],
+      "answer": "git rerere"
+    },
+    {
+      "id": 16,
+      "question": "Comment comparer ce qui est stagé vs ce qui est dans le HEAD ?",
+      "choices": ["git diff --staged", "git diff --cached", "git compare --index", "git jauge magique"],
+      "answer": "git diff --staged"
+    },
+    {
+      "id": 17,
+      "question": "Quelle option de git log affiche chaque commit sur une seule ligne ?",
+      "choices": ["git log --oneline", "git log --single", "git log --compact", "git log express"],
+      "answer": "git log --oneline"
+    },
+    {
+      "id": 18,
+      "question": "Quelle commande réécrit l’historique pour filtrer ou modifier de vieux commits ?",
+      "choices": ["git filter-branch", "git history-modify", "git rewriter", "git bac-à-sable"],
+      "answer": "git filter-branch"
+    },
+    {
+      "id": 19,
+      "question": "Quelle commande renomme un dépôt distant de 'origin' à 'upstream' ?",
+      "choices": ["git remote rename origin upstream", "git remote -m origin upstream", "git remote -r origin upstream", "git change l'adresse stp"],
+      "answer": "git remote rename origin upstream"
+    },
+    {
+      "id": 20,
+      "question": "Quelle variante de pull évite un commit de merge en refaisant un rebase ?",
+      "choices": ["git pull --rebase", "git pull --no-merge", "git pull --fast-forward-only", "git pull sans bagarre"],
+      "answer": "git pull --rebase"
+    },
+    {
+      "id": 21,
+      "question": "Comment lister toutes les références stash créées ?",
+      "choices": ["git stash list", "git stash show-all", "git stash ls", "git cachette-liste"],
+      "answer": "git stash list"
     }
   ]
 }

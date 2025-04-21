@@ -169,10 +169,9 @@ function QuizComponent({ quizData, settings }: QuizProps) {
 
   /* 3) Render conditions */
   // While the questions are still loading.
-  if (!filtered || !categories.length|| !currentQuestions.length) {
+  if (!filtered || !categories.length || !currentQuestions.length) {
     return <div>Loading…</div>;
   }
-  console.log(settings);
   
   // Check if the quiz is completed.
   if (quizCompleted) return (<QuizCompleted score={score} totalQuestions={totalQuestions} />);
