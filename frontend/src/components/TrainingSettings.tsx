@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import { Settings } from "./types/settings";
-import { QuizSettingsData } from "./types/quizData";
+import { useState } from "react";
+import { Settings } from "../types/settings";
+import { QuizSettingsData } from "../types/quizData";
 
-interface HomeProps {
+interface TrainingSettingsProps {
   categories: string[];
   maxPerCategory: QuizSettingsData;
   onStart: (s: Settings) => void;
@@ -14,20 +14,12 @@ const DEFAULT_CATEGORIES = [
   "JS",
 ]
 
-function Home({ categories, maxPerCategory, onStart }: HomeProps) {
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+function TrainingSettings({categories, maxPerCategory, onStart }: TrainingSettingsProps) {
+  const initialSelected = DEFAULT_CATEGORIES.filter(cat => categories.includes(cat));
+  const [selectedCategories, setSelectedCategories] = useState<string[]>(initialSelected);
   const [questionsPerCategory, setQuestionsPerCategory] = useState<QuizSettingsData>({});
   const [timePerQuestion, setTimePerQuestion] = useState<number | null>(25);
   const [timerEnabled, setTimerEnabled] = useState(true);
-
-  // Set default categories
-  useEffect(() => {
-    categories.forEach(cat => {
-      if (DEFAULT_CATEGORIES.includes(cat) && !selectedCategories.includes(cat)) {
-        setSelectedCategories(s => [...s, cat]);
-      }
-    })
-  }, [categories])
 
   const toggleCategory = (cat: string) => {
     setSelectedCategories(s => 
@@ -60,12 +52,14 @@ function Home({ categories, maxPerCategory, onStart }: HomeProps) {
       }, {} as QuizSettingsData),
       timePerQuestion: timerEnabled ? timePerQuestion : null,
     };
+    console.log("settings", s);
+    
     onStart(s);
   }
 
   return (
     <div>
-      <h2>Quiz Settings</h2>
+      <h2>Training Settings</h2>
       <fieldset>
         <legend>Select themes & # questions</legend>
         {categories.map((cat) => (
@@ -121,10 +115,10 @@ function Home({ categories, maxPerCategory, onStart }: HomeProps) {
       </fieldset>
 
       <button onClick={handleSubmit} disabled={!selectedCategories.length}>
-        Start Quiz
+        Start Training
       </button>
     </div>
   );
 }
 
-export default Home;
+export default TrainingSettings;
