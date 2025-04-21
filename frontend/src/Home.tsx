@@ -10,7 +10,7 @@ interface HomeProps {
 function Home({ categories, maxPerCategory, onStart }: HomeProps) {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [questionsPerCategory, setQuestionsPerCategory] = useState<Record<string,number>>({});
-  const [timePerQuestion, setTimePerQuestion] = useState<number | null>(null);
+  const [timePerQuestion, setTimePerQuestion] = useState<number | null>(25);
   const [timerEnabled, setTimerEnabled] = useState(true);
 
   const toggleCategory = (cat: string) => {
