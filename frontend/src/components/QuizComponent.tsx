@@ -1,24 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
+//functions
 import shuffleArray, { shuffleFirstThree} from '../functions/shuffleQuestions';
+//types
+import { QuizData, QuizQuestion } from '../types/quizData';
+import { Settings } from '../types/settings';
 
-// Define a type for a single quiz question.
-interface QuizQuestion {
-  id: number;
-  question: string;
-  choices: string[];
-  // The correct answer is kept only on the backend for verification.
+interface QuizProps {
+  quizData: QuizData;
+  settings: Settings;
 }
 
-// Define a type for the entire quiz data organized by categories.
-interface QuizData {
-  [category: string]: QuizQuestion[];
-}
-
-const MAX_TIME = 25;
-
-function QuizComponent() {
-  // State to store the complete quiz data from the server.
-  const [quizData, setQuizData] = useState<QuizData | null>(null);
+function QuizComponent({ quizData, settings }: QuizProps) {
+  const { selectedCategories, questionsPerCategory, timePerQuestion } = settings;
+  const MAX_TIME = timePerQuestion ?? Infinity;
   // State to store the categories of the quiz.
   const [categories, setCategories] = useState<string[]>([]);
   // State to track the current category
@@ -41,43 +35,31 @@ function QuizComponent() {
   const [remainingTime, setRemainingTime] = useState(MAX_TIME);
   const timerRef = useRef<number>(MAX_TIME);
 
+  //quiz payload
+  const [filtered, setFiltered] = useState<QuizData>({});
 
-  /* 1) Fetch quiz data and Initialize */
   useEffect(() => {
-    fetch('http://127.0.0.1:5000/api/quiz', {
-      credentials: 'include'  // send cookie so Flask can reset session
-    })
-    .then(r => r.json())
-    .then((data: QuizData) => {
-      // shuffle the questions
-      const randomizedData: QuizData = {};
-      Object.entries(data).forEach(([category, questions]) => {
-        //shuffle the array of questions
-        const qsShuffled = shuffleArray([...questions]);
-        //Then, for each question, shuffle the third choices
-        randomizedData[category] = qsShuffled.map(q => ({
-          ...q,
-          choices: shuffleFirstThree(q.choices)
-        }));
-      });
-
-      setQuizData(randomizedData);
-      const cats = Object.keys(randomizedData);
-      setCategories(cats);
-
-      //fill the currentQuestions state with the first question of the first category
-      // Here, it is : "CSS"
-      if (cats.length > 0) {
-        setCurrentQuestions(randomizedData[cats[0]]);
-      }
-      const totalQuestions = Object.values(data).reduce((acc, cat) => acc + cat.length, 0);
-      setQuestionsLeft(totalQuestions);
-      // reset client‑side score to match server
-      setScore(0);
-    })
-    .catch(error => console.error('Error fetching quiz data:', error));
-  }, []);
-
+    const newFiltered: QuizData = {};
+    const newCategories: string[] = [];
+  
+    selectedCategories.forEach(cat => {
+      const allQs = shuffleArray([...quizData[cat]]);
+      const count = questionsPerCategory[cat];
+      newFiltered[cat] = allQs
+        .slice(0, count)
+        .map(q => ({ ...q, choices: shuffleFirstThree(q.choices) }));
+      newCategories.push(cat);
+    });
+  
+    setFiltered(newFiltered);
+    setCategories(newCategories);
+    setCurrentQuestions(newFiltered[newCategories[0]]);
+    const totalQuestions = Object.values(newFiltered).reduce((acc, cat) => acc + cat.length, 0);
+    setQuestionsLeft(totalQuestions);
+    
+    setScore(0);
+  }, [quizData, selectedCategories, questionsPerCategory]);
+  
 
   // Start/reset timer on each new question
   useEffect(() => {
@@ -155,15 +137,18 @@ function QuizComponent() {
 
 
   const advance = () => {
+    // increment current question index
     const nextQ = currentIndex + 1;
     setQuestionsLeft(questionsLeft - 1);
+    // if they are still some questions left in the current category, continue
     if (nextQ < currentQuestions.length) {
       setCurrentIndex(nextQ);
     } else {
+      // if we're at the end of the current category, move to the next one
       const nextCat = categoryIndex + 1;
-      if (quizData && nextCat < categories.length) {
+      if (filtered && nextCat < categories.length) {
         setCategoryIndex(nextCat);
-        setCurrentQuestions(quizData[categories[nextCat]]);
+        setCurrentQuestions(filtered[categories[nextCat]]);
         setCurrentIndex(0);
       } else {
         setQuizCompleted(true);
@@ -178,9 +163,10 @@ function QuizComponent() {
     submitAnswer(selected, elapsed);
   };
 
+
   /* 3) Render conditions */
   // While the questions are still loading.
-  if (!quizData || !categories.length|| !currentQuestions.length) {
+  if (!filtered || !categories.length|| !currentQuestions.length) {
     return <div>Loading…</div>;
   }
 
@@ -205,7 +191,7 @@ function QuizComponent() {
         <strong>Questions left:</strong> {questionsLeft}
       </div>
       <h2>{currentQuestion.question}</h2>
-      <div>Time left: {remainingTime}s</div>
+      {remainingTime != Infinity && <div>Time left : {remainingTime}s</div>}
       <ul>
         {currentQuestion.choices.map((c, i) => (
           <li key={i}>
