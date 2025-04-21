@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Settings } from "./types/settings";
 import { QuizSettingsData } from "./types/quizData";
 
@@ -8,11 +8,26 @@ interface HomeProps {
   onStart: (s: Settings) => void;
 }
 
+const DEFAULT_CATEGORIES = [
+  "HTML",
+  "CSS",
+  "JS",
+]
+
 function Home({ categories, maxPerCategory, onStart }: HomeProps) {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [questionsPerCategory, setQuestionsPerCategory] = useState<QuizSettingsData>({});
   const [timePerQuestion, setTimePerQuestion] = useState<number | null>(25);
   const [timerEnabled, setTimerEnabled] = useState(true);
+
+  // Set default categories
+  useEffect(() => {
+    categories.forEach(cat => {
+      if (DEFAULT_CATEGORIES.includes(cat) && !selectedCategories.includes(cat)) {
+        setSelectedCategories(s => [...s, cat]);
+      }
+    })
+  }, [categories])
 
   const toggleCategory = (cat: string) => {
     setSelectedCategories(s => 
@@ -54,12 +69,13 @@ function Home({ categories, maxPerCategory, onStart }: HomeProps) {
       <fieldset>
         <legend>Select themes & # questions</legend>
         {categories.map((cat) => (
-          <div key={cat}>
+          <div key={cat} className="category">
             <label>
               <input
                 type="checkbox"
                 checked={selectedCategories.includes(cat)}
                 onChange={() => toggleCategory(cat)}
+                
               />
               {cat}
             </label>
@@ -72,6 +88,9 @@ function Home({ categories, maxPerCategory, onStart }: HomeProps) {
                 onChange={e => updateCount(cat, +e.target.value)}
               />
             )}
+          <div>
+            max = {maxPerCategory[cat]}
+          </div>
           </div>
         ))}
       </fieldset>
