@@ -3,12 +3,15 @@ import { useEffect, useState } from "react";
 import { Settings } from "./types/settings";
 import { QuizData, QuizSettingsData } from "./types/quizData";
 
-import Home from './components/TrainingSettings';
 import QuizComponent from './components/QuizComponent';
+import ModeSelection from "./components/ModeSelection";
+import TrainingSettings from './components/TrainingSettings';
+import ChallengeSettings from "./components/ChallengeSettings";
 
 import './App.css';
 
 function App() {
+  const [mode, setMode] = useState<'training' | 'challenge' | null>(null);
   const [quizStarted, setQuizStarted] = useState(false);
   const [settings, setSettings] = useState<Settings | null>(null);
   const [quizData, setQuizData] = useState<QuizData | null>(null);
@@ -41,21 +44,44 @@ function App() {
     .catch(console.error);
   }
 
-  return (
-    <div className="App">
-      {!quizStarted && quizSettingsData && (
-        <Home
+  //1. Pick mode
+  if (!mode) return <ModeSelection onSelect={setMode} />;
+  
+  //2. show appropriate settings UI
+  if (!quizStarted && quizSettingsData && mode === 'training') {
+    return (
+        <TrainingSettings
           categories={Object.keys(quizSettingsData)}
           maxPerCategory={quizSettingsData}  // so Home can cap the number inputs
           onStart={handleStart}
         />
-      )}
-      {quizStarted && quizData && settings && (
-        <QuizComponent
-          quizData={quizData}
-          settings={settings}
-        />
-      )}
+    );
+  }
+
+  if (!quizStarted && quizSettingsData && mode === 'challenge') {
+    return (
+      <ChallengeSettings
+        categories={Object.keys(quizSettingsData)}
+        onStart={handleStart}
+      />
+    );
+  }
+
+  //3. start quiz
+  if (quizStarted && quizData && settings) {
+    return (
+      <QuizComponent
+        quizData={quizData}
+        settings={settings}
+      />
+    );
+  }
+  
+  //4. loading...
+
+  return (
+    <div className="App">
+      <h1>Loading...</h1>
     </div>
   );
 }

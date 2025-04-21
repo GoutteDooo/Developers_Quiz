@@ -126,7 +126,7 @@ function QuizComponent({ quizData, settings }: QuizProps) {
       setTimeout(() => {
         setFeedback(null);
         advance();
-      }, 500);
+      }, 1);
     })
     .catch(error => {
       console.error('Error verifying answer:', error)
