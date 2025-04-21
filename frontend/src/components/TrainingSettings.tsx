@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Settings } from "../types/settings";
 import { QuizSettingsData } from "../types/quizData";
 
-interface HomeProps {
+interface TrainingSettingsProps {
   categories: string[];
   maxPerCategory: QuizSettingsData;
   onStart: (s: Settings) => void;
@@ -14,7 +14,7 @@ const DEFAULT_CATEGORIES = [
   "JS",
 ]
 
-function Home({ categories, maxPerCategory, onStart }: HomeProps) {
+function Home({categories, maxPerCategory, onStart }: TrainingSettingsProps) {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [questionsPerCategory, setQuestionsPerCategory] = useState<QuizSettingsData>({});
   const [timePerQuestion, setTimePerQuestion] = useState<number | null>(25);
@@ -65,7 +65,7 @@ function Home({ categories, maxPerCategory, onStart }: HomeProps) {
 
   return (
     <div>
-      <h2>Quiz Settings</h2>
+      <h2>Training Settings</h2>
       <fieldset>
         <legend>Select themes & # questions</legend>
         {categories.map((cat) => (
@@ -121,7 +121,7 @@ function Home({ categories, maxPerCategory, onStart }: HomeProps) {
       </fieldset>
 
       <button onClick={handleSubmit} disabled={!selectedCategories.length}>
-        Start Quiz
+        Start Training
       </button>
     </div>
   );
