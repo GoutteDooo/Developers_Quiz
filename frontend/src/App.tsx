@@ -12,12 +12,13 @@ function App() {
   const [quizStarted, setQuizStarted] = useState(false);
   const [settings, setSettings] = useState<Settings | null>(null);
   const [quizData, setQuizData] = useState<QuizData | null>(null);
+  const [quizSettingsData, setQuizSettingsData] = useState<Record<string, number>>({});
 
   useEffect(() => {
     fetch("http://127.0.0.1:5000/api/quiz/")
       .then(r => r.json())
-      .then((data: QuizData) => {
-        setQuizData(data);
+      .then((data: Record<string, number>) => {
+        setQuizSettingsData(data);
       })
       .catch(console.error);
   }, [])
@@ -42,10 +43,10 @@ function App() {
 
   return (
     <div className="App">
-      {!quizStarted && quizData && (
+      {!quizStarted && quizSettingsData && (
         <Home
-          categories={Object.keys(quizData)}
-          maxPerCategory={quizData}  // so Home can cap the number inputs
+          categories={Object.keys(quizSettingsData)}
+          maxPerCategory={quizSettingsData}  // so Home can cap the number inputs
           onStart={handleStart}
         />
       )}
