@@ -28,3 +28,7 @@ body {
 .read-the-docs {
   color: #888;
 }
+
+#feedback {
+  height: 50px;
+}

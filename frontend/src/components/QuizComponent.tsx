@@ -201,7 +201,7 @@ function QuizComponent({ quizData, settings }: QuizProps) {
           </li>
         ))}
       </ul>
-      {feedback && <p>{feedback}</p>}
+      <div id='feedback'>{feedback && feedback}</div>
     </div>
   );
 }
