@@ -35,15 +35,16 @@ export default function ChallengeSettings({
   return (
     <div>
       <h2>Challenge Mode</h2>
-      <p>All categories, fixed number of questions:</p>
+      <p>All categories, fixed number of questions and 20 seconds per question.</p>
+      <p>Your score will be registered.</p>
       <button onClick={() => start('easy')}>
-        Easy: 30 questions (3 × each)
+        Easy: {questionCounts.easy * categories.length} questions (3 x each)
       </button>
       <button onClick={() => start('medium')}>
-        Medium: 50 questions (5 × each)
+        Medium: {questionCounts.medium * categories.length} questions (5 × each)
       </button>
       <button onClick={() => start('hard')}>
-        Hard: 80 questions (8 × each)
+        Hard: {questionCounts.hard * categories.length} questions (8 × each)
       </button>
     </div>
   );
