@@ -1,7 +1,0 @@
-Titre
-====
-
-# Titre
-
-~~test~~
-\\*test\\*

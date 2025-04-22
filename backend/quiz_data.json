@@ -2432,5 +2432,241 @@
       "choices": ["git stash list", "git stash show-all", "git stash ls", "git cachette-liste"],
       "answer": "git stash list"
     }
+  ],
+  "C": [
+    {
+      "id": 1,
+      "question": "Quelle fonction est le point d’entrée d’un programme C ?",
+      "choices": ["int main()", "void start()", "entry()", "le grand saut()"],
+      "answer": "int main()"
+    },
+    {
+      "id": 2,
+      "question": "Quelle directive permet d’inclure une bibliothèque standard ?",
+      "choices": ["#include <stdio.h>", "#import stdio.h", "include(\"stdio.h\")", "#magie stdio"],
+      "answer": "#include <stdio.h>"
+    },
+    {
+      "id": 3,
+      "question": "Quel spécificateur de format utilise-t-on dans printf pour afficher un entier ?",
+      "choices": ["%d", "%s", "%f", "%licorne%"],
+      "answer": "%d"
+    },
+    {
+      "id": 4,
+      "question": "Comment déclare-t-on un pointeur vers un int ?",
+      "choices": ["int *p;", "int p*;", "ptr int p;", "magie intp;"],
+      "answer": "int *p;"
+    },
+    {
+      "id": 5,
+      "question": "Quel opérateur sert à déréférencer un pointeur ?",
+      "choices": ["*", "&", "->", "!"],
+      "answer": "*"
+    },
+    {
+      "id": 6,
+      "question": "Quel opérateur permet d’obtenir l’adresse d’une variable ?",
+      "choices": ["&", "*", "%", "@"],
+      "answer": "&"
+    },
+    {
+      "id": 7,
+      "question": "Comment réserver dynamiquement de la mémoire pour 10 entiers ?",
+      "choices": ["malloc(10 * sizeof(int))", "alloc(10, int)", "malloc(sizeof(int[10]))", "magieMalloc()"],
+      "answer": "malloc(10 * sizeof(int))"
+    },
+    {
+      "id": 8,
+      "question": "Quelle fonction libère un bloc de mémoire alloué dynamiquement ?",
+      "choices": ["free(ptr);", "delete ptr;", "release(ptr);", "au_revoir(ptr);"],
+      "answer": "free(ptr);"
+    },
+    {
+      "id": 9,
+      "question": "Comment déclare-t-on un tableau de 5 doubles ?",
+      "choices": ["double tab[5];", "double tab{5};", "double[5] tab;", "tabbing(5)"],
+      "answer": "double tab[5];"
+    },
+    {
+      "id": 10,
+      "question": "Quel mot-clé sert à définir un type d’union ?",
+      "choices": ["union", "struct", "enum", "magie"],
+      "answer": "union"
+    },
+    {
+      "id": 11,
+      "question": "Quel opérateur logique 'et' s’écrit en C ?",
+      "choices": ["&&", "&", "and", "hey!"],
+      "answer": "&&"
+    },
+    {
+      "id": 12,
+      "question": "Comment protège-t-on un fichier d’en-tête contre les inclusions multiples ?",
+      "choices": ["#ifndef HEADER_H ... #endif", "#protect HEADER_H", "#once HEADER_H", "#met_ton_mask"],
+      "answer": "#ifndef HEADER_H ... #endif"
+    },
+    {
+      "id": 13,
+      "question": "Quelle fonction saisit une chaîne depuis l’entrée standard sans protéger contre le débordement ?",
+      "choices": ["gets()", "fgets()", "scanf()", "read_magic()"],
+      "answer": "gets()"
+    },
+    {
+      "id": 14,
+      "question": "Quelle fonction est recommandée pour lire une ligne en toute sécurité ?",
+      "choices": ["fgets()", "gets()", "gets_s()", "fancy fgets()"],
+      "answer": "fgets()"
+    },
+    {
+      "id": 15,
+      "question": "Quel mot-clé indique qu’une variable ne doit pas être modifiée ?",
+      "choices": ["const", "static", "volatile", "immuable"],
+      "answer": "const"
+    },
+    {
+      "id": 16,
+      "question": "Quel mot-clé signale que la valeur peut changer de façon imprévisible ?",
+      "choices": ["volatile", "mutable", "dynamic", "volatile-dope"],
+      "answer": "volatile"
+    },
+    {
+      "id": 17,
+      "question": "Quelle fonction de la bibliothèque string copie n caractères d’une chaîne ?",
+      "choices": ["strncpy()", "strcpy()", "strcat()", "strdracula()"],
+      "answer": "strncpy()"
+    },
+    {
+      "id": 18,
+      "question": "Quel opérateur compare l’égalité en C ?",
+      "choices": ["==", "=", "===", "!?"],
+      "answer": "=="
+    },
+    {
+      "id": 19,
+      "question": "Quel mot-clé déclare une variable locale visible uniquement dans le fichier courant ?",
+      "choices": ["static", "extern", "auto", "localhero"],
+      "answer": "static"
+    },
+    {
+      "id": 20,
+      "question": "Quel mot-clé déclare une variable définie ailleurs ?",
+      "choices": ["extern", "static", "global", "outside"],
+      "answer": "extern"
+    },
+    {
+      "id": 21,
+      "question": "Quelle syntaxe définit un prototype de fonction ?",
+      "choices": ["int add(int a, int b);", "function add(int a, int b);", "def add(int a, int b)", "proto add"],
+      "answer": "int add(int a, int b);"
+    },
+    {
+      "id": 22,
+      "question": "Comment appelle-t-on une fonction via un pointeur ?",
+      "choices": ["(*fp)();", "fp();", "&fp();", "#fp()"],
+      "answer": "(*fp)();"
+    },
+    {
+      "id": 23,
+      "question": "Quelle instruction provoque une erreur de segmentation ?",
+      "choices": ["*(int *)0 = 0;", "printf(NULL);", "exit(-1);", "segfault()"],
+      "answer": "*(int *)0 = 0;"
+    },
+    {
+      "id": 24,
+      "question": "Comment définit-on une macro simple avec le préprocesseur ?",
+      "choices": ["#define MAX 100", "#macro MAX 100", "#set MAX 100", "magie_define"],
+      "answer": "#define MAX 100"
+    },
+    {
+      "id": 25,
+      "question": "Quelle macro préprocesseur indique la version du standard C ?",
+      "choices": ["__STDC_VERSION__", "__VERSION__", "__CSTD__", "_STD_VER"],
+      "answer": "__STDC_VERSION__"
+    },
+    {
+      "id": 26,
+      "question": "Quelle directive exclut du code si une condition est fausse ?",
+      "choices": ["#if", "#ifnot", "#unless", "#when"],
+      "answer": "#if"
+    },
+    {
+      "id": 27,
+      "question": "Quelle option gcc active l’affichage de tous les avertissements ?",
+      "choices": ["-Wall", "-w", "--warnings", "warning++"],
+      "answer": "-Wall"
+    },
+    {
+      "id": 28,
+      "question": "Quelle option gcc optimise le code pour la taille ?",
+      "choices": ["-Os", "-O2", "-O3", "-Osize"],
+      "answer": "-Os"
+    },
+    {
+      "id": 29,
+      "question": "Quel appel système ouvre un fichier en lecture seule ?",
+      "choices": ["open(\"fichier\", O_RDONLY)", "fopen(\"fichier\",\"r\")", "open(\"fichier\", \"r\")", "fileopen()"],
+      "answer": "open(\"fichier\", O_RDONLY)"
+    },
+    {
+      "id": 30,
+      "question": "Quel type permet de représenter un entier 64 bits en C99 ?",
+      "choices": ["int64_t", "long", "long double", "bigint"],
+      "answer": "int64_t"
+    },
+    {
+      "id": 31,
+      "question": "Quel en-tête définit la fonction fork et d’autres constantes POSIX ?",
+      "choices": ["<unistd.h>", "<stdio.h>", "<stdlib.h>", "<magic.h>"],
+      "answer": "<unistd.h>"
+    },
+    {
+      "id": 32,
+      "question": "Quel type de boucle garantit l’exécution du bloc au moins une fois ?",
+      "choices": ["do...while", "while", "for", "loop"],
+      "answer": "do...while"
+    },
+    {
+      "id": 33,
+      "question": "Quelle fonction compare deux chaînes de caractères ?",
+      "choices": ["strcmp()", "strncmp()", "compare()", "strmagic()"],
+      "answer": "strcmp()"
+    },
+    {
+      "id": 34,
+      "question": "Comment convertir un entier en pointeur (opération non sécurisée) ?",
+      "choices": ["(int *)n", "int*(n)", "cast int n to ptr", "convertMagic(n)"],
+      "answer": "(int *)n"
+    },
+    {
+      "id": 35,
+      "question": "Quel mot-clé suggère au compilateur de stocker une variable dans un registre ?",
+      "choices": ["register", "auto", "static", "fast"],
+      "answer": "register"
+    },
+    {
+      "id": 36,
+      "question": "Quelle macro intégrée affiche le nom du fichier source courant ?",
+      "choices": ["__FILE__", "__LINE__", "__DEBUG__", "__LOC__"],
+      "answer": "__FILE__"
+    },
+    {
+      "id": 37,
+      "question": "Comment compiler plusieurs fichiers source avec gcc ?",
+      "choices": ["gcc a.c b.c -o prog", "gcc a.c -b b.c -o prog", "gcc --files a.c,b.c -o prog", "gcc magique"],
+      "answer": "gcc a.c b.c -o prog"
+    },
+    {
+      "id": 38,
+      "question": "Quel mot-clé représente la portée automatique locale d’une variable ?",
+      "choices": ["auto", "static", "extern", "register"],
+      "answer": "auto"
+    },
+    {
+      "id": 39,
+      "question": "Quelle fonction de stdlib convertit une chaîne en entier ?",
+      "choices": ["atoi()", "itoa()", "strtoi()", "toint()"],
+      "answer": "atoi()"
+    }
   ]
 }
